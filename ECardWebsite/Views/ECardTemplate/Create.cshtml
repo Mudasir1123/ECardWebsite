@@ -1,0 +1,49 @@
+﻿@model ECardWebsite.Models.ECardTemplate
+
+@{
+    ViewData["Title"] = "Create eCard Template";
+}
+
+<h1>Create eCard Template</h1>
+
+@if (ViewBag.Categories == null || !ViewBag.Categories.Any())
+{
+    <div class="alert alert-warning">
+        No categories available. Please <a asp-controller="Category" asp-action="Create">create a category</a> first.
+    </div>
+}
+else
+{
+    <form asp-action="Create">
+        <div class="form-group" style="--i: 1">
+            <label asp-for="Title" class="control-label"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="form-group" style="--i: 2">
+            <label asp-for="Description" class="control-label"></label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group" style="--i: 3">
+            <label asp-for="ImageUrl" class="control-label"></label>
+            <input asp-for="ImageUrl" class="form-control" />
+            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+        </div>
+        <div class="form-group" style="--i: 4">
+            <label asp-for="CategoryId" class="control-label">Category</label>
+            <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.Categories, "CategoryId", "Name"))">
+                <option value="">Select a category</option>
+            </select>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
+        <div class="form-group" style="--i: 5">
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

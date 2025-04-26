@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<ECardWebsite.Models.ECardTemplate>
+
+@{
+    ViewData["Title"] = "Manage eCard Templates";
+}
+
+<h1>Manage eCard Templates</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New eCard Template</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Image URL</th>
+            <th>Category</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var template in Model)
+        {
+            <tr>
+                <td>@template.Title</td>
+                <td>@template.Description</td>
+                <td>@template.ImageUrl</td>
+                <td>@template.Category?.Name</td>
+                <td>@template.CreatedAt.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-templateId="@template.TemplateId" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-templateId="@template.TemplateId" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

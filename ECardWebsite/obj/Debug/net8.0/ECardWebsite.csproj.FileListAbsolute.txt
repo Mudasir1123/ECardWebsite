@@ -138,3 +138,4 @@ C:\Users\M Mudasir\Pictures\ECardWebsite\ECardWebsite\obj\Debug\net8.0\ECardWebs
 C:\Users\M Mudasir\Pictures\ECardWebsite\ECardWebsite\obj\Debug\net8.0\ECardWebsite.genruntimeconfig.cache
 C:\Users\M Mudasir\Pictures\ECardWebsite\ECardWebsite\obj\Debug\net8.0\ref\ECardWebsite.dll
 C:\Users\M Mudasir\Pictures\ECardWebsite\ECardWebsite\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\M Mudasir\Pictures\ECardWebsite\ECardWebsite\obj\Debug\net8.0\ECardWebsite.sourcelink.json

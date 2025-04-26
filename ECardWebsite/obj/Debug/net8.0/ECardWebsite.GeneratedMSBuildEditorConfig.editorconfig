@@ -28,8 +28,40 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/M Mudasir/Pictures/ECardWebsite/ECardWebsite/Views/Category/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/M Mudasir/Pictures/ECardWebsite/ECardWebsite/Views/Category/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/M Mudasir/Pictures/ECardWebsite/ECardWebsite/Views/Category/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/M Mudasir/Pictures/ECardWebsite/ECardWebsite/Views/Category/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/M Mudasir/Pictures/ECardWebsite/ECardWebsite/Views/Contact/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/M Mudasir/Pictures/ECardWebsite/ECardWebsite/Views/ECardTemplate/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRUNhcmRUZW1wbGF0ZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/M Mudasir/Pictures/ECardWebsite/ECardWebsite/Views/ECardTemplate/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRUNhcmRUZW1wbGF0ZVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/M Mudasir/Pictures/ECardWebsite/ECardWebsite/Views/ECardTemplate/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRUNhcmRUZW1wbGF0ZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/M Mudasir/Pictures/ECardWebsite/ECardWebsite/Views/ECardTemplate/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRUNhcmRUZW1wbGF0ZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/M Mudasir/Pictures/ECardWebsite/ECardWebsite/Views/Home/Index.cshtml]

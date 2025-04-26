@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model ECardWebsite.Models.ECardTemplate
+
+@{
+    ViewData["Title"] = "Edit eCard Template";
+}
+
+<h1>Edit eCard Template</h1>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="TemplateId" />
+    <div class="form-group" style="--i: 1">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="--i: 2">
+        <label asp-for="Description" class="control-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="--i: 3">
+        <label asp-for="ImageUrl" class="control-label"></label>
+        <input asp-for="ImageUrl" class="form-control" />
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="--i: 4">
+        <label asp-for="CategoryId" class="control-label">Category</label>
+        <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.Categories, "CategoryId", "Name"))">
+            <option value="">Select a category</option>
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="--i: 5">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
