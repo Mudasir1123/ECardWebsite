@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up - E-Greeting</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4f46e5',secondary:'#f59e0b'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+  font-family: 'Inter', sans-serif;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.custom-checkbox {
+  appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.custom-checkbox:checked {
+  background-color: #4f46e5;
+  border-color: #4f46e5;
+}
+.custom-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.password-strength {
+  height: 4px;
+  transition: all 0.3s ease;
+}
+.password-strength-weak {
+  width: 33%;
+  background-color: #ef4444;
+}
+.password-strength-medium {
+  width: 66%;
+  background-color: #f59e0b;
+}
+.password-strength-strong {
+  width: 100%;
+  background-color: #10b981;
+}
+</style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+<!-- Header -->
+<header class="bg-white shadow-sm">
+  <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+    <a href="https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/3ce95c39-a934-4856-a4b7-cc0a387ef93b" data-readdy="true" class="text-3xl font-['Pacifico'] text-primary">logo</a>
+    <a href="https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/3ce95c39-a934-4856-a4b7-cc0a387ef93b" data-readdy="true" class="text-gray-600 hover:text-primary transition-colors flex items-center">
+      <span>Back to Home</span>
+      <div class="w-5 h-5 ml-2 flex items-center justify-center">
+        <i class="ri-arrow-right-line"></i>
+      </div>
+    </a>
+  </div>
+</header>
+
+<!-- Sign Up Form Section -->
+<section class="py-12">
+  <div class="container mx-auto px-4">
+    <div class="max-w-md mx-auto bg-white rounded-lg shadow-sm p-8">
+      <div class="text-center mb-8">
+        <h1 class="text-2xl font-bold text-gray-900 mb-2">Create Your Account</h1>
+        <p class="text-gray-600">Join thousands of users creating and sharing beautiful digital greetings</p>
+      </div>
+      
+      <form id="signupForm">
+        <!-- Name Field -->
+        <div class="mb-5">
+          <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+          <div class="relative">
+            <input 
+              type="text" 
+              id="fullName" 
+              class="w-full px-4 py-3 border border-gray-300 rounded text-gray-900 focus:ring-2 focus:ring-primary/20 focus:border-primary focus:outline-none"
+              placeholder="Enter your full name"
+              required
+            >
+            <div class="hidden absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 w-5 h-5 flex items-center justify-center">
+              <i class="ri-check-line"></i>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Email Field -->
+        <div class="mb-5">
+          <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+          <div class="relative">
+            <input 
+              type="email" 
+              id="email" 
+              class="w-full px-4 py-3 border border-gray-300 rounded text-gray-900 focus:ring-2 focus:ring-primary/20 focus:border-primary focus:outline-none"
+              placeholder="Enter your email address"
+              required
+            >
+            <div class="hidden absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 w-5 h-5 flex items-center justify-center">
+              <i class="ri-check-line"></i>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Password Field -->
+        <div class="mb-5">
+          <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+          <div class="relative">
+            <input 
+              type="password" 
+              id="password" 
+              class="w-full px-4 py-3 border border-gray-300 rounded text-gray-900 focus:ring-2 focus:ring-primary/20 focus:border-primary focus:outline-none pr-10"
+              placeholder="Create a password"
+              required
+            >
+            <button type="button" id="togglePassword" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5 flex items-center justify-center">
+              <i class="ri-eye-line"></i>
+            </button>
+          </div>
+          <div class="mt-2">
+            <div class="bg-gray-200 rounded-full h-1 w-full">
+              <div id="passwordStrength" class="password-strength rounded-full"></div>
+            </div>
+            <p id="passwordHint" class="text-xs text-gray-500 mt-1">Password must be at least 8 characters with letters, numbers and special characters</p>
+          </div>
+        </div>
+        
+        <!-- Confirm Password Field -->
+        <div class="mb-6">
+          <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+          <div class="relative">
+            <input 
+              type="password" 
+              id="confirmPassword" 
+              class="w-full px-4 py-3 border border-gray-300 rounded text-gray-900 focus:ring-2 focus:ring-primary/20 focus:border-primary focus:outline-none"
+              placeholder="Confirm your password"
+              required
+            >
+            <div id="passwordMatch" class="hidden absolute right-3 top-1/2 transform -translate-y-1/2 text-green-500 w-5 h-5 flex items-center justify-center">
+              <i class="ri-check-line"></i>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Social Sign Up -->
+        <div class="mb-6">
+          <div class="relative flex items-center justify-center">
+            <hr class="w-full border-gray-300">
+            <span class="absolute bg-white px-3 text-sm text-gray-500">or sign up with</span>
+          </div>
+          
+          <div class="grid grid-cols-2 gap-4 mt-4">
+            <button type="button" class="!rounded-button flex items-center justify-center bg-white border border-gray-300 text-gray-700 py-3 hover:bg-gray-50 transition-colors whitespace-nowrap">
+              <div class="w-5 h-5 mr-2 flex items-center justify-center">
+                <i class="ri-google-fill text-red-500"></i>
+              </div>
+              <span>Google</span>
+            </button>
+            <button type="button" class="!rounded-button flex items-center justify-center bg-white border border-gray-300 text-gray-700 py-3 hover:bg-gray-50 transition-colors whitespace-nowrap">
+              <div class="w-5 h-5 mr-2 flex items-center justify-center">
+                <i class="ri-facebook-fill text-blue-600"></i>
+              </div>
+              <span>Facebook</span>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Terms Acceptance -->
+        <div class="mb-6">
+          <div class="flex items-start">
+            <input type="checkbox" id="termsAccept" class="custom-checkbox mt-1" required>
+            <label for="termsAccept" class="ml-3 text-sm text-gray-600">
+              I agree to the <a href="#" class="text-primary hover:underline">Terms of Service</a> and <a href="#" class="text-primary hover:underline">Privacy Policy</a>
+            </label>
+          </div>
+        </div>
+        
+        <!-- Submit Button -->
+        <button type="submit" id="createAccountBtn" class="w-full !rounded-button bg-primary text-white py-3 font-medium hover:bg-primary/90 transition-colors whitespace-nowrap flex items-center justify-center">
+          <span>Create Account</span>
+        </button>
+      </form>
+      
+      <!-- Login Link -->
+      <div class="text-center mt-6">
+        <p class="text-gray-600">
+          Already have an account? 
+          <a href="https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/c6affdc8-ca81-43e8-a80a-ca400d4e3234" data-readdy="true" class="text-primary hover:underline font-medium">Log in</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="py-12 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-gray-900 text-center mb-8">Benefits of Creating an Account</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Benefit 1 -->
+        <div class="flex flex-col items-center text-center">
+          <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+            <div class="w-7 h-7 flex items-center justify-center text-primary">
+              <i class="ri-save-line ri-xl"></i>
+            </div>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Save Your Designs</h3>
+          <p class="text-gray-600">Store all your personalized greeting cards and access them anytime from any device</p>
+        </div>
+        
+        <!-- Benefit 2 -->
+        <div class="flex flex-col items-center text-center">
+          <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+            <div class="w-7 h-7 flex items-center justify-center text-primary">
+              <i class="ri-calendar-line ri-xl"></i>
+            </div>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Schedule Delivery</h3>
+          <p class="text-gray-600">Plan ahead by scheduling your e-cards for future delivery on the perfect date</p>
+        </div>
+        
+        <!-- Benefit 3 -->
+        <div class="flex flex-col items-center text-center">
+          <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+            <div class="w-7 h-7 flex items-center justify-center text-primary">
+              <i class="ri-vip-crown-line ri-xl"></i>
+            </div>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Premium Templates</h3>
+          <p class="text-gray-600">Access exclusive templates and advanced customization options not available to guests</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white pt-12 pb-6">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <div>
+        <a href="https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/3ce95c39-a934-4856-a4b7-cc0a387ef93b" data-readdy="true" class="text-3xl font-['Pacifico'] text-white mb-4 inline-block">logo</a>
+        <p class="text-gray-400 mb-6">Making digital greetings personal and meaningful since 2020.</p>
+        <div class="flex space-x-4">
+          <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+            <i class="ri-facebook-fill"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+            <i class="ri-twitter-x-fill"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+            <i class="ri-instagram-fill"></i>
+          </a>
+          <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+            <i class="ri-pinterest-fill"></i>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Templates</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">How It Works</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Gift Cards</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Company</h3>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Press</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Support</h3>
+        <ul class="space-y-3">
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Accessibility</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-6 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-400 mb-4 md:mb-0">&copy; 2025 E-Greeting Platform. All rights reserved.</p>
+      <div class="flex items-center space-x-4">
+        <div class="w-8 h-5 flex items-center justify-center text-gray-400">
+          <i class="ri-visa-fill ri-lg"></i>
+        </div>
+        <div class="w-8 h-5 flex items-center justify-center text-gray-400">
+          <i class="ri-mastercard-fill ri-lg"></i>
+        </div>
+        <div class="w-8 h-5 flex items-center justify-center text-gray-400">
+          <i class="ri-paypal-fill ri-lg"></i>
+        </div>
+        <div class="w-8 h-5 flex items-center justify-center text-gray-400">
+          <i class="ri-apple-fill ri-lg"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Password strength indicator
+  const passwordInput = document.getElementById('password');
+  const passwordStrength = document.getElementById('passwordStrength');
+  const passwordHint = document.getElementById('passwordHint');
+  
+  passwordInput.addEventListener('input', function() {
+    const password = this.value;
+    let strength = 0;
+    
+    if (password.length >= 8) strength += 1;
+    if (/[A-Z]/.test(password)) strength += 1;
+    if (/[0-9]/.test(password)) strength += 1;
+    if (/[^A-Za-z0-9]/.test(password)) strength += 1;
+    
+    passwordStrength.className = 'password-strength rounded-full';
+    
+    if (password.length === 0) {
+      passwordStrength.style.width = '0';
+      passwordHint.textContent = 'Password must be at least 8 characters with letters, numbers and special characters';
+      passwordHint.className = 'text-xs text-gray-500 mt-1';
+    } else if (strength <= 1) {
+      passwordStrength.classList.add('password-strength-weak');
+      passwordHint.textContent = 'Weak password - add numbers and special characters';
+      passwordHint.className = 'text-xs text-red-500 mt-1';
+    } else if (strength <= 2) {
+      passwordStrength.classList.add('password-strength-medium');
+      passwordHint.textContent = 'Medium password - add uppercase letters or special characters';
+      passwordHint.className = 'text-xs text-yellow-500 mt-1';
+    } else {
+      passwordStrength.classList.add('password-strength-strong');
+      passwordHint.textContent = 'Strong password';
+      passwordHint.className = 'text-xs text-green-500 mt-1';
+    }
+  });
+});
+document.addEventListener('DOMContentLoaded', function() {
+  // Toggle password visibility
+  const togglePassword = document.getElementById('togglePassword');
+  const passwordInput = document.getElementById('password');
+  
+  togglePassword.addEventListener('click', function() {
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+    
+    // Toggle the eye icon
+    const icon = this.querySelector('i');
+    if (type === 'text') {
+      icon.classList.remove('ri-eye-line');
+      icon.classList.add('ri-eye-off-line');
+    } else {
+      icon.classList.remove('ri-eye-off-line');
+      icon.classList.add('ri-eye-line');
+    }
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Password match validation
+  const password = document.getElementById('password');
+  const confirmPassword = document.getElementById('confirmPassword');
+  const passwordMatch = document.getElementById('passwordMatch');
+  
+  confirmPassword.addEventListener('input', function() {
+    if (this.value.length > 0) {
+      if (this.value === password.value) {
+        passwordMatch.classList.remove('hidden');
+        passwordMatch.classList.remove('text-red-500');
+        passwordMatch.classList.add('text-green-500');
+        passwordMatch.innerHTML = '<i class="ri-check-line"></i>';
+      } else {
+        passwordMatch.classList.remove('hidden');
+        passwordMatch.classList.remove('text-green-500');
+        passwordMatch.classList.add('text-red-500');
+        passwordMatch.innerHTML = '<i class="ri-close-line"></i>';
+      }
+    } else {
+      passwordMatch.classList.add('hidden');
+    }
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Form submission
+  const form = document.getElementById('signupForm');
+  const createAccountBtn = document.getElementById('createAccountBtn');
+  
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Simulate loading state
+    createAccountBtn.innerHTML = '<div class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div> Creating Account...';
+    createAccountBtn.disabled = true;
+    
+    // Simulate API call
+    setTimeout(() => {
+      // Redirect to home page after successful signup
+      window.location.href = 'https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/3ce95c39-a934-4856-a4b7-cc0a387ef93b';
+    }, 1500);
+  });
+});
+</script>
+</body>
+</html>

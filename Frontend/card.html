@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cards - E-Greeting</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#4f46e5',secondary:'#f59e0b'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .custom-checkbox {
+            appearance: none;
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 2px solid #d1d5db;
+            border-radius: 4px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .custom-checkbox:checked {
+            background-color: #4f46e5;
+            border-color: #4f46e5;
+        }
+        .custom-checkbox:checked::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .custom-switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 24px;
+        }
+        .custom-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .switch-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e5e7eb;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .switch-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .switch-slider {
+            background-color: #4f46e5;
+        }
+        input:checked + .switch-slider:before {
+            transform: translateX(24px);
+        }
+        .range-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 5px;
+            background: #e5e7eb;
+            outline: none;
+        }
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #4f46e5;
+            cursor: pointer;
+        }
+        .range-slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #4f46e5;
+            cursor: pointer;
+        }
+        .custom-radio {
+            appearance: none;
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 2px solid #d1d5db;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .custom-radio:checked {
+            border-color: #4f46e5;
+        }
+        .custom-radio:checked::after {
+            content: '';
+            position: absolute;
+            width: 0.625rem;
+            height: 0.625rem;
+            background-color: #4f46e5;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .card-actions {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .card-item:hover .card-actions {
+            opacity: 1;
+        }
+        .status-sent {
+            background-color: #10b981;
+        }
+        .status-scheduled {
+            background-color: #3b82f6;
+        }
+        .status-draft {
+            background-color: #9ca3af;
+        }
+        .delete-modal, .schedule-modal {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-white min-h-screen">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center">
+                <a href="#" class="text-3xl font-['Pacifico'] text-primary">logo</a>
+                <nav class="hidden md:flex ml-10 space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-primary transition-colors">Templates</a>
+                    <a href="https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/3ce95c39-a934-4856-a4b7-cc0a387ef93b" data-readdy="true" class="text-primary font-medium hover:text-primary/90 transition-colors">My Cards</a>
+                    <a href="#" class="text-gray-600 hover:text-primary transition-colors">Subscriptions</a>
+                    <a href="#" class="text-gray-600 hover:text-primary transition-colors">Pricing</a>
+                </nav>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative hidden md:block">
+                    <input type="text" placeholder="Search templates..." class="pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm w-64">
+                    <div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400">
+                        <i class="ri-search-line"></i>
+                    </div>
+                </div>
+                <a href="#" class="!rounded-button bg-white text-gray-700 border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Log In</a>
+                <a href="#" class="!rounded-button bg-primary text-white px-4 py-2 text-sm font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Page Header -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">My Cards</h1>
+                <p class="text-gray-600">Manage your saved greeting cards</p>
+            </div>
+            <a href="https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/3ce95c39-a934-4856-a4b7-cc0a387ef93b" data-readdy="true" class="!rounded-button bg-primary text-white px-5 py-2.5 text-sm font-medium hover:bg-primary/90 transition-colors whitespace-nowrap flex items-center mt-4 md:mt-0">
+                <div class="w-5 h-5 mr-2 flex items-center justify-center">
+                    <i class="ri-add-line"></i>
+                </div>
+                <span>Create New Card</span>
+            </a>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="mb-6">
+            <div class="border-b border-gray-200">
+                <div class="flex flex-wrap -mb-px">
+                    <button class="inline-block py-4 px-4 text-sm font-medium text-primary border-b-2 border-primary" id="all-tab">
+                        All Cards
+                    </button>
+                    <button class="inline-block py-4 px-4 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300" id="sent-tab">
+                        Sent
+                    </button>
+                    <button class="inline-block py-4 px-4 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300" id="scheduled-tab">
+                        Scheduled
+                    </button>
+                    <button class="inline-block py-4 px-4 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:border-gray-300" id="draft-tab">
+                        Drafts
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search and Sort -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+            <div class="relative w-full md:w-96">
+                <input type="text" placeholder="Search your cards..." class="w-full pl-10 pr-4 py-2.5 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+                <div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400">
+                    <i class="ri-search-line"></i>
+                </div>
+            </div>
+            
+            <div class="flex flex-wrap gap-3 w-full md:w-auto">
+                <div class="relative">
+                    <button class="flex items-center space-x-2 bg-white border border-gray-300 rounded-button px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                        <span>Sort by: Date</span>
+                        <div class="w-4 h-4 flex items-center justify-center">
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                    </button>
+                </div>
+                
+                <div class="relative">
+                    <button class="flex items-center space-x-2 bg-white border border-gray-300 rounded-button px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                        <span>Filter</span>
+                        <div class="w-4 h-4 flex items-center justify-center">
+                            <i class="ri-filter-3-line"></i>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8" id="cards-grid">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden group card-item">
+                <div class="relative aspect-[4/3] overflow-hidden">
+                    <img src="https://readdy.ai/api/search-image?query=A%2520modern%252C%2520elegant%2520birthday%2520greeting%2520card%2520design%2520with%2520soft%2520pastel%2520colors.%2520The%2520card%2520features%2520a%2520minimalist%2520cake%2520with%2520lit%2520candles%2520on%2520a%2520clean%2520background.%2520Professional%2520digital%2520design%2520with%2520subtle%2520patterns%2520and%2520elegant%2520typography%2520saying%2520Happy%2520Birthday.%2520The%2520style%2520is%2520contemporary%2520and%2520sophisticated%2520with%2520a%2520clean%2520layout.&width=600&height=450&seq=11&orientation=landscape" alt="Birthday Card" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+                    <div class="absolute top-2 right-2 flex space-x-1 card-actions">
+                        <a href="https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/3ce95c39-a934-4856-a4b7-cc0a387ef93b" data-readdy="true" class="bg-white/90 rounded-full p-1.5 hover:bg-white transition-colors">
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-700 hover:text-primary">
+                                <i class="ri-edit-line"></i>
+                            </div>
+                        </a>
+                        <button class="bg-white/90 rounded-full p-1.5 hover:bg-white transition-colors duplicate-btn">
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-700 hover:text-primary">
+                                <i class="ri-file-copy-line"></i>
+                            </div>
+                        </button>
+                        <button class="bg-white/90 rounded-full p-1.5 hover:bg-white transition-colors delete-btn">
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-700 hover:text-red-500">
+                                <i class="ri-delete-bin-line"></i>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                        <span class="inline-block px-2 py-1 rounded-full text-xs font-medium text-white bg-blue-500 status-scheduled">Scheduled</span>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-medium text-gray-900 mb-1">Birthday Wishes for Emily</h3>
+                    <p class="text-sm text-gray-500 mb-2">To: Emily Johnson</p>
+                    <div class="flex items-center text-xs text-gray-500">
+                        <div class="w-4 h-4 flex items-center justify-center mr-1">
+                            <i class="ri-calendar-line"></i>
+                        </div>
+                        <span>Scheduled for April 30, 2025</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden group card-item">
+                <div class="relative aspect-[4/3] overflow-hidden">
+                    <img src="https://readdy.ai/api/search-image?query=A%2520modern%252C%2520elegant%2520thank%2520you%2520greeting%2520card%2520design%2520with%2520soft%2520blue%2520and%2520gold%2520colors.%2520The%2520card%2520features%2520a%2520minimalist%2520floral%2520pattern%2520with%2520elegant%2520typography%2520saying%2520Thank%2520You.%2520Professional%2520digital%2520design%2520with%2520subtle%2520textures%2520and%2520a%2520sophisticated%2520layout.%2520The%2520style%2520is%2520contemporary%2520and%2520refined%2520with%2520a%2520clean%2520aesthetic.&width=600&height=450&seq=12&orientation=landscape" alt="Thank You Card" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+                    <div class="absolute top-2 right-2 flex space-x-1 card-actions">
+                        <a href="https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/3ce95c39-a934-4856-a4b7-cc0a387ef93b" data-readdy="true" class="bg-white/90 rounded-full p-1.5 hover:bg-white transition-colors">
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-700 hover:text-primary">
+                                <i class="ri-edit-line"></i>
+                            </div>
+                        </a>
+                        <button class="bg-white/90 rounded-full p-1.5 hover:bg-white transition-colors duplicate-btn">
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-700 hover:text-primary">
+                                <i class="ri-file-copy-line"></i>
+                            </div>
+                        </button>
+                        <button class="bg-white/90 rounded-full p-1.5 hover:bg-white transition-colors delete-btn">
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-700 hover:text-red-500">
+                                <i class="ri-delete-bin-line"></i>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                        <span class="inline-block px-2 py-1 rounded-full text-xs font-medium text-white bg-green-500 status-sent">Sent</span>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-medium text-gray-900 mb-1">Thank You Note</h3>
+                    <p class="text-sm text-gray-500 mb-2">To: Alexander Williams</p>
+                    <div class="flex items-center text-xs text-gray-500">
+                        <div class="w-4 h-4 flex items-center justify-center mr-1">
+                            <i class="ri-calendar-check-line"></i>
+                        </div>
+                        <span>Sent on April 15, 2025</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden group card-item">
+                <div class="relative aspect-[4/3] overflow-hidden">
+                    <img src="https://readdy.ai/api/search-image?query=A%2520modern%252C%2520elegant%2520wedding%2520congratulations%2520greeting%2520card%2520design%2520with%2520soft%2520pastel%2520colors.%2520The%2520card%2520features%2520minimalist%2520floral%2520elements%2520with%2520two%2520wedding%2520rings.%2520Professional%2520digital%2520design%2520with%2520subtle%2520textures%2520and%2520elegant%2520typography%2520saying%2520Congratulations.%2520The%2520style%2520is%2520romantic%2520and%2520sophisticated%2520with%2520a%2520clean%2520layout.&width=600&height=450&seq=13&orientation=landscape" alt="Wedding Card" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+                    <div class="absolute top-2 right-2 flex space-x-1 card-actions">
+                        <a href="https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/3ce95c39-a934-4856-a4b7-cc0a387ef93b" data-readdy="true" class="bg-white/90 rounded-full p-1.5 hover:bg-white transition-colors">
+                            <div class="w-5 h-5 flex items-center justify-center text-gray-700 hover:text-primary">
+                                <i class="ri-edit-line"></i>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Cards - E-Greeting</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4f46e5',secondary:'#f59e0b'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+    font-family: 'Inter', sans-serif;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.custom-checkbox {
+    appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid #d1d5db;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.custom-checkbox:checked {
+    background-color: #4f46e5;
+    border-color: #4f46e5;
+}
+.custom-checkbox:checked::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+.custom-switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+}
+.custom-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.switch-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e5e7eb;
+    transition: .4s;
+    border-radius: 24px;
+}
+.switch-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .switch-slider {
+    background-color: #4f46e5;
+}
+input:checked + .switch-slider:before {
+    transform: translateX(24px);
+}
+.range-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 5px;
+    background: #e5e7eb;
+    outline: none;
+}
+.range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #4f46e5;
+    cursor: pointer;
+}
+.range-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #4f46e5;
+    cursor: pointer;
+}
+.custom-radio {
+    appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid #d1d5db;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.custom-radio:checked {
+    border-color: #4f46e5;
+}
+.custom-radio:checked::after {
+    content: '';
+    position: absolute;
+    width: 0.625rem;
+    height: 0.625rem;
+    background-color: #4f46e5;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.card-actions {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+.card:hover .card-actions {
+    opacity: 1;
+}
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+.status-draft {
+    background-color: #f3f4f6;
+    color: #6b7280;
+}
+.status-scheduled {
+    background-color: #e0f2fe;
+    color: #0369a1;
+}
+.status-sent {
+    background-color: #dcfce7;
+    color: #16a34a;
+}
+</style>
+</head>
+<body class="bg-white min-h-screen">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+        <div class="flex items-center">
+            <a href="#" class="text-3xl font-['Pacifico'] text-primary">logo</a>
+            <nav class="hidden md:flex ml-10 space-x-8">
+                <a href="#" class="text-gray-600 hover:text-primary transition-colors">Templates</a>
+                <a href="https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/3ce95c39-a934-4856-a4b7-cc0a387ef93b" data-readdy="true" class="text-primary font-medium transition-colors">My Cards</a>
+                <a href="#" class="text-gray-600 hover:text-primary transition-colors">Subscriptions</a>
+                <a href="#" class="text-gray-600 hover:text-primary transition-colors">Pricing</a>
+            </nav>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div class="relative hidden md:block">
+                <input type="text" placeholder="Search templates..." class="pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm w-64">
+                <div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400">
+                    <i class="ri-search-line"></i>
+                </div>
+            </div>
+            <a href="#" class="!rounded-button bg-white text-gray-700 border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Log In</a>
+            <a href="#" class="!rounded-button bg-primary text-white px-4 py-2 text-sm font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Sign Up</a>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="container mx-auto px-4 py-8 min-h-[calc(100vh-64px-300px)]">
+    <!-- Page Header -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+        <div>
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">My Cards</h1>
+            <p class="text-gray-600">Manage all your created greeting cards</p>
+        </div>
+        <a href="https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/3ce95c39-a934-4856-a4b7-cc0a387ef93b" data-readdy="true" class="!rounded-button bg-primary text-white px-5 py-2.5 text-sm font-medium hover:bg-primary/90 transition-colors whitespace-nowrap flex items-center mt-4 md:mt-0">
+            <div class="w-5 h-5 mr-2 flex items-center justify-center">
+                <i class="ri-add-line"></i>
+            </div>
+            <span>Create New Card</span>
+        </a>
+    </div>
+
+    <!-- Filters and Search -->
+    <div class="bg-white rounded-lg shadow-sm p-4 mb-8">
+        <div class="flex flex-col space-y-4">
+            <!-- Status Tabs -->
+            <div class="flex overflow-x-auto pb-2">
+                <div class="inline-flex p-1 bg-gray-100 rounded-full">
+                    <button class="px-6 py-2 rounded-full bg-white shadow-sm text-gray-900 font-medium whitespace-nowrap">All Cards</button>
+                    <button class="px-6 py-2 rounded-full text-gray-600 hover:text-gray-900 whitespace-nowrap">Sent</button>
+                    <button class="px-6 py-2 rounded-full text-gray-600 hover:text-gray-900 whitespace-nowrap">Scheduled</button>
+                    <button class="px-6 py-2 rounded-full text-gray-600 hover:text-gray-900 whitespace-nowrap">Draft</button>
+                </div>
+            </div>
+            
+            <!-- Search and Sort -->
+            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                <div class="relative flex-grow">
+                    <input type="text" placeholder="Search your cards..." class="w-full pl-10 pr-4 py-2.5 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+                    <div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400">
+                        <i class="ri-search-line"></i>
+                    </div>
+                </div>
+                
+                <div class="flex space-x-4">
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 bg-white border border-gray-300 rounded-button px-4 py-2.5 text-gray-700 hover:bg-gray-50 whitespace-nowrap text-sm">
+                            <span>Sort by: Date</span>
+                            <div class="w-4 h-4 flex items-center justify-center">
+                                <i class="ri-arrow-down-s-line"></i>
+                            </div>
+                        </button>
+                    </div>
+                    
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 bg-white border border-gray-300 rounded-button px-4 py-2.5 text-gray-700 hover:bg-gray-50 whitespace-nowrap text-sm">
+                            <span>Filter</span>
+                            <div class="w-4 h-4 flex items-center justify-center">
+                                <i class="ri-filter-3-line"></i>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <!-- Card 1 -->
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden card">
+            <div class="relative aspect-[4/3] overflow-hidden">
+                <img src="https://readdy.ai/api/search-image?query=A%2520beautiful%2520birthday%2520greeting%2520card%2520with%2520elegant%2520design%2520featuring%2520colorful%2520balloons%2520and%2520confetti%2520on%2520a%2520soft%2520pastel%2520background.%2520The%2520card%2520has%2520modern%2520typography%2520with%2520Happy%2520Birthday%2520text.%2520The%2520style%2520is%2520clean%2520and%2520professional%2520with%2520attention%2520to%2520detail%2520and%2520balanced%2520composition.%2520High-quality%2520digital%2520illustration%2520with%2520soft%2520shadows%2520and%2520highlights.&width=600&height=450&seq=11&orientation=landscape" alt="Birthday Card" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/5"></div>
+                <div class="absolute top-3 right-3 card-actions flex space-x-1">
+                    <button class="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition-colors">
+                        <i class="ri-edit-line"></i>
+                    </button>
+                    <button class="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition-colors">
+                        <i class="ri-file-copy-line"></i>
+                    </button>
+                    <button class="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-red-500 transition-colors">
+                        <i class="ri-delete-bin-line"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-medium text-gray-900">Sarah's Birthday</h3>
+                    <span class="status-badge status-sent">Sent</span>
+                </div>
+                <p class="text-sm text-gray-500 mb-2">To: Sarah Johnson</p>
+                <div class="flex items-center text-xs text-gray-500 mb-4">
+                    <div class="w-4 h-4 flex items-center justify-center mr-1">
+                        <i class="ri-calendar-line"></i>
+                    </div>
+                    <span>Sent on April 15, 2025</span>
+                </div>
+                <a href="https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/3ce95c39-a934-4856-a4b7-cc0a387ef93b" data-readdy="true" class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap flex items-center justify-center">
+                    <span>View Card</span>
+                    <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                        <i class="ri-eye-line"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden card">
+            <div class="relative aspect-[4/3] overflow-hidden">
+                <img src="https://readdy.ai/api/search-image?query=A%2520professional%2520thank%2520you%2520greeting%2520card%2520with%2520elegant%2520design%2520featuring%2520minimalist%2520floral%2520elements%2520and%2520gold%2520accents%2520on%2520a%2520soft%2520cream%2520background.%2520The%2520card%2520has%2520modern%2520typography%2520with%2520Thank%2520You%2520text.%2520The%2520style%2520is%2520clean%2520and%2520sophisticated%2520with%2520attention%2520to%2520detail%2520and%2520balanced%2520composition.%2520High-quality%2520digital%2520illustration%2520with%2520soft%2520shadows.&width=600&height=450&seq=12&orientation=landscape" alt="Thank You Card" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/5"></div>
+                <div class="absolute top-3 right-3 card-actions flex space-x-1">
+                    <button class="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition-colors">
+                        <i class="ri-edit-line"></i>
+                    </button>
+                    <button class="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition-colors">
+                        <i class="ri-file-copy-line"></i>
+                    </button>
+                    <button class="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-red-500 transition-colors">
+                        <i class="ri-delete-bin-line"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-medium text-gray-900">Client Thank You</h3>
+                    <span class="status-badge status-scheduled">Scheduled</span>
+                </div>
+                <p class="text-sm text-gray-500 mb-2">To: Robert Chen</p>
+                <div class="flex items-center text-xs text-gray-500 mb-4">
+                    <div class="w-4 h-4 flex items-center justify-center mr-1">
+                        <i class="ri-calendar-line"></i>
+                    </div>
+                    <span>Scheduled for May 3, 2025</span>
+                </div>
+                <a href="https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/3ce95c39-a934-4856-a4b7-cc0a387ef93b" data-readdy="true" class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap flex items-center justify-center">
+                    <span>View Card</span>
+                    <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                        <i class="ri-eye-line"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden card">
+            <div class="relative aspect-[4/3] overflow-hidden">
+                <img src="https://readdy.ai/api/search-image?query=A%2520modern%2520wedding%2520congratulations%2520greeting%2520card%2520with%2520elegant%2520design%2520featuring%2520minimalist%2520floral%2520elements%2520and%2520two%2520wedding%2520rings%2520on%2520a%2520soft%2520pastel%2520background.%2520The%2520card%2520has%2520modern%2520typography%2520with%2520Congratulations%2520text.%2520The%2520style%2520is%2520clean%2520and%2520romantic%2520with%2520attention%2520to%2520detail%2520and%2520balanced%2520composition.%2520High-quality%2520digital%2520illustration%2520with%2520soft%2520shadows.&width=600&height=450&seq=13&orientation=landscape" alt="Wedding Card" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/5"></div>
+                <div class="absolute top-3 right-3 card-actions flex space-x-1">
+                    <button class="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition-colors">
+                        <i class="ri-edit-line"></i>
+                    </button>
+                    <button class="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition-colors">
+                        <i class="ri-file-copy-line"></i>
+                    </button>
+                    <button class="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-red-500 transition-colors">
+                        <i class="ri-delete-bin-line"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-medium text-gray-900">Wedding Wishes</h3>
+                    <span class="status-badge status-draft">Draft</span>
+                </div>
+                <p class="text-sm text-gray-500 mb-2">To: Emily & Michael</p>
+                <div class="flex items-center text-xs text-gray-500 mb-4">
+                    <div class="w-4 h-4 flex items-center justify-center mr-1">
+                        <i class="ri-edit-line"></i>
+                    </div>
+                    <span>Last edited on April 20, 2025</span>
+                </div>
+                <a href="https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/3ce95c39-a934-4856-a4b7-cc0a387ef93b" data-readdy="true" class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap flex items-center justify-center">
+                    <span>Continue Editing</span>
+                    <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                        <i class="ri-edit-line"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden card">
+            <div class="relative aspect-[4/3] overflow-hidden">
+                <img src="https://readdy.ai/api/search-image?query=A%2520modern%2520holiday%2520greeting%2520card%2520with%2520elegant%2520design%2520featuring%2520minimalist%2520snowflakes%2520and%2520festive%2520elements%2520on%2520a%2520soft%2520blue%2520background.%2520The%2520card%2520has%2520modern%2520typography%2520with%2520Happy%2520Holidays%2520text.%2520The%2520style%2520is%2520clean%2520and%2520winter-themed%2520with%2520attention%2520to%2520detail%2520and%2520balanced%2520composition.%2520High-quality%2520digital%2520illustration%2520with%2520soft%2520shadows.&width=600&height=450&seq=14&orientation=landscape" alt="Holiday Card" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/5"></div>
+                <div class="absolute top-3 right-3 card-actions flex space-x-1">
+                    <button class="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition-colors">
+                        <i class="ri-edit-line"></i>
+                    </button>
+                    <button class="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition-colors">
+                        <i class="ri-file-copy-line"></i>
+                    </button>
+                    <button class="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-red-500 transition-colors">
+                        <i class="ri-delete-bin-line"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-medium text-gray-900">Winter Holidays</h3>
+                    <span class="status-badge status-sent">Sent</span>
+                </div>
+                <p class="text-sm text-gray-500 mb-2">To: Team Members (12)</p>
+                <div class="flex items-center text-xs text-gray-500 mb-4">
+                    <div class="w-4 h-4 flex items-center justify-center mr-1">
+                        <i class="ri-calendar-line"></i>
+                    </div>
+                    <span>Sent on December 20, 2024</span>
+                </div>
+                <a href="https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/3ce95c39-a934-4856-a4b7-cc0a387ef93b" data-readdy="true" class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap flex items-center justify-center">
+                    <span>View Card</span>
+                    <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                        <i class="ri-eye-line"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden card">
+            <div class="relative aspect-[4/3] overflow-hidden">
+                <img src="https://readdy.ai/api/search-image?query=A%2520modern%2520baby%2520shower%2520greeting%2520card%2520with%2520elegant%2520design%2520featuring%2520minimalist%2520baby%2520elements%2520like%2520a%2520stroller%2520and%2520baby%2520clothes%2520on%2520a%2520soft%2520pastel%2520background.%2520The%2520card%2520has%2520modern%2520typography%2520with%2520Congratulations%2520text.%2520The%2520style%2520is%2520clean%2520and%2520sweet%2520with%2520attention%2520to%2520detail%2520and%2520balanced%2520composition.%2520High-quality%2520digital%2520illustration%2520with%2520soft%2520shadows.&width=600&height=450&seq=15&orientation=landscape" alt="Baby Shower Card" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/5"></div>
+                <div class="absolute top-3 right-3 card-actions flex space-x-1">
+                    <button class="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition-colors">
+                        <i class="ri-edit-line"></i>
+                    </button>
+                    <button class="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition-colors">
+                        <i class="ri-file-copy-line"></i>
+                    </button>
+                    <button class="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-red-500 transition-colors">
+                        <i class="ri-delete-bin-line"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-medium text-gray-900">Baby Shower</h3>
+                    <span class="status-badge status-scheduled">Scheduled</span>
+                </div>
+                <p class="text-sm text-gray-500 mb-2">To: Jessica Williams</p>
+                <div class="flex items-center text-xs text-gray-500 mb-4">
+                    <div class="w-4 h-4 flex items-center justify-center mr-1">
+                        <i class="ri-calendar-line"></i>
+                    </div>
+                    <span>Scheduled for May 12, 2025</span>
+                </div>
+                <a href="https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/3ce95c39-a934-4856-a4b7-cc0a387ef93b" data-readdy="true" class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap flex items-center justify-center">
+                    <span>View Card</span>
+                    <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                        <i class="ri-eye-line"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden card">
+            <div class="relative aspect-[4/3] overflow-hidden">
+                <img src="https://readdy.ai/api/search-image?query=A%2520modern%2520anniversary%2520greeting%2520card%2520with%2520elegant%2520design%2520featuring%2520minimalist%2520hearts%2520and%2520floral%2520elements%2520with%2520gold%2520accents.%2520The%2520card%2520has%2520modern%2520typography%2520with%2520Happy%2520Anniversary%2520text.%2520The%2520style%2520is%2520clean%2520and%2520romantic%2520with%2520attention%2520to%2520detail%2520and%2520balanced%2520composition.%2520High-quality%2520digital%2520illustration%2520with%2520soft%2520shadows.&width=600&height=450&seq=16&orientation=landscape" alt="Anniversary Card" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/5"></div>
+                <div class="absolute top-3 right-3 card-actions flex space-x-1">
+                    <button class="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition-colors">
+                        <i class="ri-edit-line"></i>
+                    </button>
+                    <button class="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition-colors">
+                        <i class="ri-file-copy-line"></i>
+                    </button>
+                    <button class="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-gray-700 hover:text-red-500 transition-colors">
+                        <i class="ri-delete-bin-line"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-medium text-gray-900">Anniversary Love</h3>
+                    <span class="status-badge status-draft">Draft</span>
+                </div>
+                <p class="text-sm text-gray-500 mb-2">To: David & Sophia</p>
+                <div class="flex items-center text-xs text-gray-500 mb-4">
+                    <div class="w-4 h-4 flex items-center justify-center mr-1">
+                        <i class="ri-edit-line"></i>
+                    </div>
+                    <span>Last edited on April 26, 2025</span>
+                </div>
+                <a href="https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/3ce95c39-a934-4856-a4b7-cc0a387ef93b" data-readdy="true" class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap flex items-center justify-center">
+                    <span>Continue Editing</span>
+                    <div class="w-4 h-4 ml-1 flex items-center justify-center">
+                        <i class="ri-edit-line"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex justify-between items-center mb-8">
+        <div class="text-sm text-gray-600">Showing 6 of 12 cards</div>
+        <div class="flex space-x-2">
+            <button class="w-10 h-10 rounded-full bg-white border border-gray-300 flex items-center justify-center text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                <i class="ri-arrow-left-s-line"></i>
+            </button>
+            <button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/90 transition-colors">1</button>
+            <button class="w-10 h-10 rounded-full bg-white border border-gray-300 flex items-center justify-center text-gray-700 hover:bg-gray-50 transition-colors">2</button>
+            <button class="w-10 h-10 rounded-full bg-white border border-gray-300 flex items-center justify-center text-gray-700 hover:bg-gray-50 transition-colors">
+                <i class="ri-arrow-right-s-line"></i>
+            </button>
+        </div>
+    </div>
+</main>
+
+<!-- Empty State (Hidden by default) -->
+<div class="hidden container mx-auto px-4 py-16 text-center">
+    <div class="max-w-md mx-auto">
+        <div class="w-32 h-32 mx-auto mb-6 bg-primary/10 rounded-full flex items-center justify-center">
+            <div class="w-16 h-16 flex items-center justify-center text-primary">
+                <i class="ri-mail-open-line ri-3x"></i>
+            </div>
+        </div>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">No cards yet</h2>
+        <p class="text-gray-600 mb-8">You haven't created any greeting cards yet. Start by creating your first card.</p>
+        <a href="https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/3ce95c39-a934-4856-a4b7-cc0a387ef93b" data-readdy="true" class="!rounded-button bg-primary text-white px-6 py-3 text-base font-medium hover:bg-primary/90 transition-colors whitespace-nowrap inline-flex items-center">
+            <div class="w-5 h-5 mr-2 flex items-center justify-center">
+                <i class="ri-add-line"></i>
+            </div>
+            <span>Create Your First Card</span>
+        </a>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal (Hidden by default) -->
+<div class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+        <div class="text-center mb-6">
+            <div class="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center">
+                <div class="w-8 h-8 flex items-center justify-center text-red-500">
+                    <i class="ri-delete-bin-line ri-xl"></i>
+                </div>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Delete Card?</h3>
+            <p class="text-gray-600">Are you sure you want to delete this card? This action cannot be undone.</p>
+        </div>
+        <div class="flex space-x-3">
+            <button class="flex-1 !rounded-button bg-white border border-gray-300 text-gray-700 px-4 py-2.5 font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Cancel</button>
+            <button class="flex-1 !rounded-button bg-red-500 text-white px-4 py-2.5 font-medium hover:bg-red-600 transition-colors whitespace-nowrap">Delete</button>
+        </div>
+    </div>
+</div>
+
+<!-- Schedule Modal (Hidden by default) -->
+<div class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="text-xl font-bold text-gray-900">Schedule Delivery</h3>
+            <button class="w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center text-gray-500">
+                <i class="ri-close-line"></i>
+            </button>
+        </div>
+        <div class="mb-6">
+            <label class="block text-sm font-medium text-gray-700 mb-2">Delivery Date</label>
+            <input type="date" class="w-full px-4 py-2.5 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+        </div>
+        <div class="mb-6">
+            <label class="block text-sm font-medium text-gray-700 mb-2">Delivery Time</label>
+            <input type="time" class="w-full px-4 py-2.5 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+        </div>
+        <div class="mb-6">
+            <label class="flex items-center">
+                <input type="checkbox" class="custom-checkbox mr-2">
+                <span class="text-sm text-gray-700">Send me a confirmation when delivered</span>
+            </label>
+        </div>
+        <div class="flex space-x-3">
+            <button class="flex-1 !rounded-button bg-white border border-gray-300 text-gray-700 px-4 py-2.5 font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Cancel</button>
+            <button class="flex-1 !rounded-button bg-primary text-white px-4 py-2.5 font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Schedule</button>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <a href="#" class="text-3xl font-['Pacifico'] text-white mb-4 inline-block">logo</a>
+                <p class="text-gray-400 mb-6">Making digital greetings personal and meaningful since 2020.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+                        <i class="ri-facebook-fill"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+                        <i class="ri-twitter-x-fill"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+                        <i class="ri-instagram-fill"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+                        <i class="ri-pinterest-fill"></i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Templates</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">How It Works</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Gift Cards</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Press</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Support</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 mb-4 md:mb-0">&copy; 2025 E-Greeting Platform. All rights reserved.</p>
+            <div class="flex items-center space-x-4">
+                <div class="w-8 h-5 flex items-center justify-center text-gray-400">
+                    <i class="ri-visa-fill ri-lg"></i>
+                </div>
+                <div class="w-8 h-5 flex items-center justify-center text-gray-400">
+                    <i class="ri-mastercard-fill ri-lg"></i>
+                </div>
+                <div class="w-8 h-5 flex items-center justify-center text-gray-400">
+                    <i class="ri-paypal-fill ri-lg"></i>
+                </div>
+                <div class="w-8 h-5 flex items-center justify-center text-gray-400">
+                    <i class="ri-apple-fill ri-lg"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Card hover actions
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        const actions = card.querySelector('.card-actions');
+        card.addEventListener('mouseenter', () => {
+            actions.style.opacity = '1';
+        });
+        card.addEventListener('mouseleave', () => {
+            actions.style.opacity = '0';
+        });
+    });
+});
+</script>
+</body>
+</html>

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ECardWebsite")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a151e5e33c7fa9cf08dd1a2b6db24067c3bcb9f9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+829cbee05b060691177436b21148ea1c44a9d44f")]
 [assembly: System.Reflection.AssemblyProductAttribute("ECardWebsite")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ECardWebsite")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

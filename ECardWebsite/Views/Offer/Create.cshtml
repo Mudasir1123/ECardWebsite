@@ -1,0 +1,53 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model ECardWebsite.Models.Offer
+
+@{
+    ViewData["Title"] = "Create Offer";
+}
+
+<h1>Create Offer</h1>
+
+<form asp-action="Create">
+    <div class="form-group" style="--i: 1">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="--i: 2">
+        <label asp-for="Description" class="control-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="--i: 3">
+        <label asp-for="DiscountPercentage" class="control-label"></label>
+        <input asp-for="DiscountPercentage" class="form-control" type="number" step="0.01" min="0" max="100" />
+        <span asp-validation-for="DiscountPercentage" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="--i: 4">
+        <label asp-for="StartDate" class="control-label"></label>
+        <input asp-for="StartDate" class="form-control" type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+        <span asp-validation-for="StartDate" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="--i: 5">
+        <label asp-for="EndDate" class="control-label"></label>
+        <input asp-for="EndDate" class="form-control" type="date" value="@DateTime.Now.AddDays(30).ToString("yyyy-MM-dd")" />
+        <span asp-validation-for="EndDate" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="--i: 6">
+        <label asp-for="IsActive" class="control-label"></label>
+        <input asp-for="IsActive" class="form-check-input" type="checkbox" checked />
+        <span asp-validation-for="IsActive" class="text-danger"></span>
+    </div>
+    <div class="form-group" style="--i: 7">
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

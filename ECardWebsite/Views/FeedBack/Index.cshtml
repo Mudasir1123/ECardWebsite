@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<ECardWebsite.Models.Feedback>
+
+@{
+    ViewData["Title"] = "Manage Feedbacks";
+}
+
+<h1>Manage Feedbacks</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New Feedback</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Message</th>
+            <th>Submitted At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var feedback in Model)
+        {
+            <tr>
+                <td>@feedback.User?.Username</td>
+                <td>@feedback.Message</td>
+                <td>@feedback.SubmittedAt.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-feedbackId="@feedback.FeedbackId" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-feedbackId="@feedback.FeedbackId" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

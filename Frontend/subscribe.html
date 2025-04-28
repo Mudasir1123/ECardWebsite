@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subscriptions - E-Greeting</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4f46e5',secondary:'#f59e0b'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.custom-checkbox {
+appearance: none;
+width: 1.25rem;
+height: 1.25rem;
+border: 2px solid #d1d5db;
+border-radius: 4px;
+position: relative;
+cursor: pointer;
+transition: all 0.2s ease;
+}
+.custom-checkbox:checked {
+background-color: #4f46e5;
+border-color: #4f46e5;
+}
+.custom-checkbox:checked::after {
+content: '';
+position: absolute;
+left: 6px;
+top: 2px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 48px;
+height: 24px;
+}
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.switch-slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #e5e7eb;
+transition: .4s;
+border-radius: 24px;
+}
+.switch-slider:before {
+position: absolute;
+content: "";
+height: 18px;
+width: 18px;
+left: 3px;
+bottom: 3px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .switch-slider {
+background-color: #4f46e5;
+}
+input:checked + .switch-slider:before {
+transform: translateX(24px);
+}
+.range-slider {
+-webkit-appearance: none;
+width: 100%;
+height: 6px;
+border-radius: 5px;
+background: #e5e7eb;
+outline: none;
+}
+.range-slider::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 18px;
+height: 18px;
+border-radius: 50%;
+background: #4f46e5;
+cursor: pointer;
+}
+.range-slider::-moz-range-thumb {
+width: 18px;
+height: 18px;
+border-radius: 50%;
+background: #4f46e5;
+cursor: pointer;
+}
+.custom-radio {
+appearance: none;
+width: 1.25rem;
+height: 1.25rem;
+border: 2px solid #d1d5db;
+border-radius: 50%;
+position: relative;
+cursor: pointer;
+transition: all 0.2s ease;
+}
+.custom-radio:checked {
+border-color: #4f46e5;
+}
+.custom-radio:checked::after {
+content: '';
+position: absolute;
+width: 0.625rem;
+height: 0.625rem;
+background-color: #4f46e5;
+border-radius: 50%;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+.plan-card {
+transition: all 0.3s ease;
+border: 2px solid transparent;
+}
+.plan-card.active {
+border-color: #4f46e5;
+box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.1), 0 8px 10px -6px rgba(79, 70, 229, 0.05);
+}
+.plan-card:hover:not(.active) {
+transform: translateY(-5px);
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+.tab-content {
+display: none;
+}
+.tab-content.active {
+display: block;
+}
+.custom-tooltip {
+position: relative;
+}
+.tooltip-text {
+visibility: hidden;
+position: absolute;
+z-index: 1;
+bottom: 125%;
+left: 50%;
+transform: translateX(-50%);
+background-color: #1f2937;
+color: white;
+text-align: center;
+padding: 8px 12px;
+border-radius: 6px;
+width: max-content;
+max-width: 250px;
+opacity: 0;
+transition: opacity 0.3s;
+font-size: 0.75rem;
+}
+.tooltip-text::after {
+content: "";
+position: absolute;
+top: 100%;
+left: 50%;
+margin-left: -5px;
+border-width: 5px;
+border-style: solid;
+border-color: #1f2937 transparent transparent transparent;
+}
+.custom-tooltip:hover .tooltip-text {
+visibility: visible;
+opacity: 1;
+}
+</style>
+</head>
+<body class="bg-white min-h-screen">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+<div class="container mx-auto px-4 py-4 flex items-center justify-between">
+<div class="flex items-center">
+<a href="#" class="text-3xl font-['Pacifico'] text-primary">logo</a>
+<nav class="hidden md:flex ml-10 space-x-8">
+<a href="#" class="text-gray-600 hover:text-primary transition-colors">Templates</a>
+<a href="https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/843e933a-63dd-4cd4-8a42-bb9a5b152d4c" data-readdy="true" class="text-gray-600 hover:text-primary transition-colors">My Cards</a>
+<a href="#" class="text-primary font-medium transition-colors">Subscriptions</a>
+<a href="#" class="text-gray-600 hover:text-primary transition-colors">Pricing</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative hidden md:block">
+<input type="text" placeholder="Search templates..." class="pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm w-64">
+<div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+</div>
+<a href="#" class="!rounded-button bg-white text-gray-700 border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Log In</a>
+<a href="#" class="!rounded-button bg-primary text-white px-4 py-2 text-sm font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Sign Up</a>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="container mx-auto px-4 py-8 min-h-[calc(100vh-64px-300px)]">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+<div>
+<h1 class="text-3xl font-bold text-gray-900 mb-2">My Subscriptions</h1>
+<p class="text-gray-600">Manage your subscription plans and billing information</p>
+</div>
+<a href="https://readdy.ai/home/4df38daa-b0e3-46df-af9d-df8318d8e378/843e933a-63dd-4cd4-8a42-bb9a5b152d4c" data-readdy="true" class="!rounded-button bg-white text-gray-700 border border-gray-300 px-5 py-2.5 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap flex items-center mt-4 md:mt-0">
+<div class="w-5 h-5 mr-2 flex items-center justify-center">
+<i class="ri-arrow-left-line"></i>
+</div>
+<span>Back to My Cards</span>
+</a>
+</div>
+<!-- Tabs -->
+<div class="mb-8">
+<div class="border-b border-gray-200">
+<nav class="flex -mb-px space-x-8">
+<button class="tab-button py-4 px-1 border-b-2 border-primary text-primary font-medium" data-tab="overview">Overview</button>
+<button class="tab-button py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="plans">Plans</button>
+<button class="tab-button py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="billing">Billing History</button>
+<button class="tab-button py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="payment">Payment Methods</button>
+</nav>
+</div>
+</div>
+<!-- Tab Content -->
+<!-- Overview Tab -->
+<div id="overview" class="tab-content active">
+<!-- Current Subscription -->
+<div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+<div class="flex flex-col md:flex-row md:items-center md:justify-between">
+<div>
+<h2 class="text-xl font-bold text-gray-900 mb-2">Current Subscription</h2>
+<div class="flex items-center mb-1">
+<span class="text-lg font-semibold text-gray-900 mr-3">Daily Sender Plan</span>
+<span class="bg-primary/10 text-primary text-xs font-medium px-2.5 py-1 rounded-full">Active</span>
+<span class="ml-3 bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-1 rounded-full">Pending Admin Approval</span>
+</div>
+<p class="text-gray-600 text-sm mb-4">Your subscription renews on <span class="font-medium">May 28, 2025</span></p>
+<p class="text-gray-600 text-sm">Payment Status: <span class="font-medium text-yellow-600">Pending Verification</span></p>
+</div>
+<div class="mt-4 md:mt-0 flex flex-col md:items-end">
+<p class="text-2xl font-bold text-gray-900 mb-1">$12.99<span class="text-sm font-normal text-gray-500">/month</span></p>
+<p class="text-sm text-gray-500 mb-4">Billed monthly</p>
+<div class="flex space-x-3">
+<button class="!rounded-button bg-white border border-gray-300 text-gray-700 px-4 py-2 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Cancel Plan</button>
+<button class="!rounded-button bg-primary text-white px-4 py-2 text-sm font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Manage Plan</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Recipient Management -->
+<div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-lg font-semibold text-gray-900">Recipient Groups</h3>
+<button class="!rounded-button bg-primary text-white px-4 py-2 text-sm font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Add Recipients</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead>
+<tr class="border-b border-gray-200">
+<th class="py-3 px-4 text-left text-sm font-medium text-gray-500">Group Name</th>
+<th class="py-3 px-4 text-left text-sm font-medium text-gray-500">Recipients</th>
+<th class="py-3 px-4 text-left text-sm font-medium text-gray-500">Status</th>
+<th class="py-3 px-4 text-left text-sm font-medium text-gray-500">Last Sent</th>
+<th class="py-3 px-4 text-right text-sm font-medium text-gray-500">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200">
+<tr>
+<td class="py-4 px-4 text-sm text-gray-900">Family Group</td>
+<td class="py-4 px-4 text-sm text-gray-600">15 recipients</td>
+<td class="py-4 px-4">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+</td>
+<td class="py-4 px-4 text-sm text-gray-600">Today, 8:00 AM</td>
+<td class="py-4 px-4 text-right">
+<button class="text-primary hover:text-primary/80 text-sm font-medium">Manage</button>
+</td>
+</tr>
+<tr>
+<td class="py-4 px-4 text-sm text-gray-900">Work Colleagues</td>
+<td class="py-4 px-4 text-sm text-gray-600">22 recipients</td>
+<td class="py-4 px-4">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+</td>
+<td class="py-4 px-4 text-sm text-gray-600">Today, 8:00 AM</td>
+<td class="py-4 px-4 text-right">
+<button class="text-primary hover:text-primary/80 text-sm font-medium">Manage</button>
+</td>
+</tr>
+<tr>
+<td class="py-4 px-4 text-sm text-gray-900">Friends Circle</td>
+<td class="py-4 px-4 text-sm text-gray-600">8 recipients</td>
+<td class="py-4 px-4">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Need 2 More</span>
+</td>
+<td class="py-4 px-4 text-sm text-gray-600">Pending</td>
+<td class="py-4 px-4 text-right">
+<button class="text-primary hover:text-primary/80 text-sm font-medium">Manage</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Usage Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<!-- Cards Created -->
+<div class="bg-white rounded-lg shadow-sm p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-lg font-semibold text-gray-900">Cards Created</h3>
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<i class="ri-mail-line ri-lg"></i>
+</div>
+</div>
+<div class="mb-2">
+<div class="flex justify-between items-end mb-1">
+<span class="text-sm font-medium text-gray-500">Used</span>
+<span class="text-sm font-medium text-gray-900">18 / 50</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2.5">
+<div class="bg-primary h-2.5 rounded-full" style="width: 36%"></div>
+</div>
+</div>
+<p class="text-sm text-gray-500">You can create 32 more cards this month</p>
+</div>
+<!-- Templates Access -->
+<div class="bg-white rounded-lg shadow-sm p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-lg font-semibold text-gray-900">Templates Access</h3>
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<i class="ri-layout-grid-line ri-lg"></i>
+</div>
+</div>
+<div class="mb-2">
+<div class="flex justify-between items-end mb-1">
+<span class="text-sm font-medium text-gray-500">Available</span>
+<span class="text-sm font-medium text-gray-900">Premium</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2.5">
+<div class="bg-primary h-2.5 rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<p class="text-sm text-gray-500">You have access to all premium templates</p>
+</div>
+<!-- Storage -->
+<div class="bg-white rounded-lg shadow-sm p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-lg font-semibold text-gray-900">Storage</h3>
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<i class="ri-hard-drive-2-line ri-lg"></i>
+</div>
+</div>
+<div class="mb-2">
+<div class="flex justify-between items-end mb-1">
+<span class="text-sm font-medium text-gray-500">Used</span>
+<span class="text-sm font-medium text-gray-900">1.2 GB / 5 GB</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2.5">
+<div class="bg-primary h-2.5 rounded-full" style="width: 24%"></div>
+</div>
+</div>
+<p class="text-sm text-gray-500">You have 3.8 GB of storage remaining</p>
+</div>
+</div>
+<!-- Usage Chart -->
+<div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+<h3 class="text-lg font-semibold text-gray-900 mb-6">Monthly Usage</h3>
+<div id="usageChart" class="w-full h-80"></div>
+</div>
+<!-- Quick Actions -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+<div class="bg-white rounded-lg shadow-sm p-6">
+<h3 class="text-lg font-semibold text-gray-900 mb-4">Need More Features?</h3>
+<p class="text-gray-600 mb-6">Upgrade to our Business plan to get access to advanced features, priority support, and more storage.</p>
+<button class="!rounded-button bg-primary text-white px-4 py-2 text-sm font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Upgrade Now</button>
+</div>
+<div class="bg-white rounded-lg shadow-sm p-6">
+<h3 class="text-lg font-semibold text-gray-900 mb-4">Have Questions?</h3>
+<p class="text-gray-600 mb-6">Our support team is here to help you with any questions about your subscription.</p>
+<button class="!rounded-button bg-white border border-gray-300 text-gray-700 px-4 py-2 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Contact Support</button>
+</div>
+</div>
+</div>
+<!-- Plans Tab -->
+<div id="plans" class="tab-content">
+<!-- Billing Toggle -->
+<div class="flex justify-center items-center mb-8">
+<span class="text-gray-600 mr-3">Monthly</span>
+<label class="custom-switch">
+<input type="checkbox" id="billingToggle">
+<span class="switch-slider"></span>
+</label>
+<span class="text-gray-600 ml-3">Annual</span>
+<span class="ml-2 bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Save 20%</span>
+</div>
+<!-- Plans Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<!-- Free Plan -->
+<div class="plan-card bg-white rounded-lg shadow-sm p-6 flex flex-col">
+<div class="mb-6">
+<h3 class="text-xl font-bold text-gray-900 mb-2">Free</h3>
+<p class="text-gray-600 text-sm">Perfect for occasional use</p>
+</div>
+<div class="mb-6">
+<p class="text-3xl font-bold text-gray-900 mb-1">$0<span class="text-base font-normal text-gray-500">/month</span></p>
+<p class="text-sm text-gray-500">Free forever</p>
+</div>
+<ul class="mb-8 space-y-3 flex-grow">
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">5 cards per month</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">Basic templates</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">500 MB storage</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">Email support</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-gray-400">
+<i class="ri-close-line"></i>
+</div>
+<span class="text-gray-400 text-sm">No watermark</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-gray-400">
+<i class="ri-close-line"></i>
+</div>
+<span class="text-gray-400 text-sm">Scheduled sending</span>
+</li>
+</ul>
+<button class="!rounded-button bg-white border border-gray-300 text-gray-700 px-4 py-2.5 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap w-full">Current Plan</button>
+</div>
+<!-- Daily Sender Plan -->
+<div class="plan-card active bg-white rounded-lg shadow-sm p-6 flex flex-col relative overflow-hidden">
+<div class="absolute top-0 right-0">
+<div class="bg-primary text-white text-xs font-bold px-3 py-1 transform rotate-45 translate-y-2 translate-x-6">
+POPULAR
+</div>
+</div>
+<div class="mb-6">
+<h3 class="text-xl font-bold text-gray-900 mb-2">Daily Sender</h3>
+<p class="text-gray-600 text-sm">Perfect for daily greetings</p>
+</div>
+<div class="mb-6">
+<p class="text-3xl font-bold text-gray-900 mb-1">$12.99<span class="text-base font-normal text-gray-500">/month</span></p>
+<p class="text-sm text-gray-500" id="premiumBillingPeriod">Billed monthly</p>
+</div>
+<ul class="mb-8 space-y-3 flex-grow">
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">Unlimited daily e-cards</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">Send to up to 50 recipients daily</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">Manage recipient groups</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">Automated daily sending</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">All premium templates</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">5 GB storage</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">Priority email support</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">No watermark</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">Scheduled sending</span>
+</li>
+</ul>
+<button class="!rounded-button bg-primary text-white px-4 py-2.5 text-sm font-medium hover:bg-primary/90 transition-colors whitespace-nowrap w-full">Current Plan</button>
+</div>
+<!-- Business Plan -->
+<div class="plan-card bg-white rounded-lg shadow-sm p-6 flex flex-col">
+<div class="mb-6">
+<h3 class="text-xl font-bold text-gray-900 mb-2">Business</h3>
+<p class="text-gray-600 text-sm">Perfect for professionals</p>
+</div>
+<div class="mb-6">
+<p class="text-3xl font-bold text-gray-900 mb-1">$29.99<span class="text-base font-normal text-gray-500">/month</span></p>
+<p class="text-sm text-gray-500" id="businessBillingPeriod">Billed monthly</p>
+</div>
+<ul class="mb-8 space-y-3 flex-grow">
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">Unlimited cards</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">All premium templates</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">20 GB storage</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">24/7 phone & email support</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">No watermark</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-600 text-sm">Advanced analytics</span>
+</li>
+</ul>
+<button class="!rounded-button bg-white border border-gray-300 text-gray-700 px-4 py-2.5 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap w-full">Upgrade</button>
+</div>
+</div>
+<!-- Feature Comparison -->
+<div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+<h3 class="text-xl font-bold text-gray-900 mb-6">Feature Comparison</h3>
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead>
+<tr class="border-b border-gray-200">
+<th class="py-3 px-4 text-left text-sm font-medium text-gray-500">Feature</th>
+<th class="py-3 px-4 text-center text-sm font-medium text-gray-500">Free</th>
+<th class="py-3 px-4 text-center text-sm font-medium text-gray-500">Premium</th>
+<th class="py-3 px-4 text-center text-sm font-medium text-gray-500">Business</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-gray-200">
+<td class="py-4 px-4 text-sm text-gray-900">Monthly card limit</td>
+<td class="py-4 px-4 text-center text-sm text-gray-600">5</td>
+<td class="py-4 px-4 text-center text-sm text-gray-600">50</td>
+<td class="py-4 px-4 text-center text-sm text-gray-600">Unlimited</td>
+</tr>
+<tr class="border-b border-gray-200">
+<td class="py-4 px-4 text-sm text-gray-900">Storage</td>
+<td class="py-4 px-4 text-center text-sm text-gray-600">500 MB</td>
+<td class="py-4 px-4 text-center text-sm text-gray-600">5 GB</td>
+<td class="py-4 px-4 text-center text-sm text-gray-600">20 GB</td>
+</tr>
+<tr class="border-b border-gray-200">
+<td class="py-4 px-4 text-sm text-gray-900">Premium templates</td>
+<td class="py-4 px-4 text-center">
+<div class="w-5 h-5 mx-auto flex items-center justify-center text-gray-400">
+<i class="ri-close-line"></i>
+</div>
+</td>
+<td class="py-4 px-4 text-center">
+<div class="w-5 h-5 mx-auto flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+</td>
+<td class="py-4 px-4 text-center">
+<div class="w-5 h-5 mx-auto flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+</td>
+</tr>
+<tr class="border-b border-gray-200">
+<td class="py-4 px-4 text-sm text-gray-900">No watermark</td>
+<td class="py-4 px-4 text-center">
+<div class="w-5 h-5 mx-auto flex items-center justify-center text-gray-400">
+<i class="ri-close-line"></i>
+</div>
+</td>
+<td class="py-4 px-4 text-center">
+<div class="w-5 h-5 mx-auto flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+</td>
+<td class="py-4 px-4 text-center">
+<div class="w-5 h-5 mx-auto flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+</td>
+</tr>
+<tr class="border-b border-gray-200">
+<td class="py-4 px-4 text-sm text-gray-900">Scheduled sending</td>
+<td class="py-4 px-4 text-center">
+<div class="w-5 h-5 mx-auto flex items-center justify-center text-gray-400">
+<i class="ri-close-line"></i>
+</div>
+</td>
+<td class="py-4 px-4 text-center">
+<div class="w-5 h-5 mx-auto flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+</td>
+<td class="py-4 px-4 text-center">
+<div class="w-5 h-5 mx-auto flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+</td>
+</tr>
+<tr class="border-b border-gray-200">
+<td class="py-4 px-4 text-sm text-gray-900">Recipient groups</td>
+<td class="py-4 px-4 text-center">
+<div class="w-5 h-5 mx-auto flex items-center justify-center text-gray-400">
+<i class="ri-close-line"></i>
+</div>
+</td>
+<td class="py-4 px-4 text-center">
+<div class="w-5 h-5 mx-auto flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+</td>
+<td class="py-4 px-4 text-center">
+<div class="w-5 h-5 mx-auto flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+</td>
+</tr>
+<tr class="border-b border-gray-200">
+<td class="py-4 px-4 text-sm text-gray-900">Custom branding</td>
+<td class="py-4 px-4 text-center">
+<div class="w-5 h-5 mx-auto flex items-center justify-center text-gray-400">
+<i class="ri-close-line"></i>
+</div>
+</td>
+<td class="py-4 px-4 text-center">
+<div class="w-5 h-5 mx-auto flex items-center justify-center text-gray-400">
+<i class="ri-close-line"></i>
+</div>
+</td>
+<td class="py-4 px-4 text-center">
+<div class="w-5 h-5 mx-auto flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+</td>
+</tr>
+<tr class="border-b border-gray-200">
+<td class="py-4 px-4 text-sm text-gray-900">Analytics</td>
+<td class="py-4 px-4 text-center">
+<div class="w-5 h-5 mx-auto flex items-center justify-center text-gray-400">
+<i class="ri-close-line"></i>
+</div>
+</td>
+<td class="py-4 px-4 text-center">
+<div class="w-5 h-5 mx-auto flex items-center justify-center text-gray-400">
+<i class="ri-close-line"></i>
+</div>
+</td>
+<td class="py-4 px-4 text-center">
+<div class="w-5 h-5 mx-auto flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+</td>
+</tr>
+<tr>
+<td class="py-4 px-4 text-sm text-gray-900">Support</td>
+<td class="py-4 px-4 text-center text-sm text-gray-600">Email</td>
+<td class="py-4 px-4 text-center text-sm text-gray-600">Priority Email</td>
+<td class="py-4 px-4 text-center text-sm text-gray-600">24/7 Phone & Email</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- FAQ -->
+<div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+<h3 class="text-xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h3>
+<div class="space-y-4">
+<div class="border-b border-gray-200 pb-4">
+<button class="flex justify-between items-center w-full text-left focus:outline-none" onclick="toggleFaq(this)">
+<span class="text-base font-medium text-gray-900">How do I change my subscription plan?</span>
+<div class="w-5 h-5 flex items-center justify-center text-gray-500 transform transition-transform faq-icon">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</button>
+<div class="mt-2 hidden faq-content">
+<p class="text-gray-600 text-sm">You can change your subscription plan at any time by going to the Plans tab in your Subscription settings. If you upgrade, the new plan will take effect immediately. If you downgrade, the new plan will take effect at the end of your current billing cycle.</p>
+</div>
+</div>
+<div class="border-b border-gray-200 pb-4">
+<button class="flex justify-between items-center w-full text-left focus:outline-none" onclick="toggleFaq(this)">
+<span class="text-base font-medium text-gray-900">Will I lose my cards if I downgrade?</span>
+<div class="w-5 h-5 flex items-center justify-center text-gray-500 transform transition-transform faq-icon">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</button>
+<div class="mt-2 hidden faq-content">
+<p class="text-gray-600 text-sm">No, you won't lose your cards if you downgrade. However, if you have more cards than the new plan allows, you won't be able to create new cards until you're under the limit. You'll still be able to view and edit your existing cards.</p>
+</div>
+</div>
+<div class="border-b border-gray-200 pb-4">
+<button class="flex justify-between items-center w-full text-left focus:outline-none" onclick="toggleFaq(this)">
+<span class="text-base font-medium text-gray-900">How does the billing cycle work?</span>
+<div class="w-5 h-5 flex items-center justify-center text-gray-500 transform transition-transform faq-icon">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</button>
+<div class="mt-2 hidden faq-content">
+<p class="text-gray-600 text-sm">Your billing cycle starts on the day you subscribe. For monthly plans, you'll be billed on the same day each month. For annual plans, you'll be billed once a year on the anniversary of your subscription date. You can view your next billing date in the Overview tab.</p>
+</div>
+</div>
+<div class="border-b border-gray-200 pb-4">
+<button class="flex justify-between items-center w-full text-left focus:outline-none" onclick="toggleFaq(this)">
+<span class="text-base font-medium text-gray-900">Can I cancel my subscription at any time?</span>
+<div class="w-5 h-5 flex items-center justify-center text-gray-500 transform transition-transform faq-icon">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</button>
+<div class="mt-2 hidden faq-content">
+<p class="text-gray-600 text-sm">Yes, you can cancel your subscription at any time. If you cancel, your subscription will remain active until the end of your current billing cycle. After that, your account will be downgraded to the Free plan. You won't receive a refund for the unused portion of your subscription.</p>
+</div>
+</div>
+<div class="pb-4">
+<button class="flex justify-between items-center w-full text-left focus:outline-none" onclick="toggleFaq(this)">
+<span class="text-base font-medium text-gray-900">Is there a refund policy?</span>
+<div class="w-5 h-5 flex items-center justify-center text-gray-500 transform transition-transform faq-icon">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</button>
+<div class="mt-2 hidden faq-content">
+<p class="text-gray-600 text-sm">We offer a 14-day money-back guarantee for new subscriptions. If you're not satisfied with your subscription within the first 14 days, contact our support team for a full refund. After 14 days, we do not offer refunds for canceled subscriptions or unused portions of your subscription.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Billing History Tab -->
+<div id="billing" class="tab-content">
+<!-- Filters -->
+<div class="bg-white rounded-lg shadow-sm p-4 mb-8">
+<div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
+<div class="flex items-center space-x-4">
+<div class="relative">
+<button class="flex items-center space-x-2 bg-white border border-gray-300 rounded-button px-4 py-2.5 text-gray-700 hover:bg-gray-50 whitespace-nowrap text-sm">
+<span>Last 6 months</span>
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</button>
+</div>
+<div class="relative">
+<button class="flex items-center space-x-2 bg-white border border-gray-300 rounded-button px-4 py-2.5 text-gray-700 hover:bg-gray-50 whitespace-nowrap text-sm">
+<span>All transactions</span>
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</button>
+</div>
+</div>
+<div class="relative">
+<input type="text" placeholder="Search transactions..." class="w-full md:w-64 pl-10 pr-4 py-2.5 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+<div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-search-line"></i>
+</div>
+</div>
+</div>
+</div>
+<!-- Billing Table -->
+<div class="bg-white rounded-lg shadow-sm overflow-hidden mb-8">
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead>
+<tr class="bg-gray-50 border-b border-gray-200">
+<th class="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+<th class="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+<th class="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+<th class="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+<th class="py-3 px-6 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Invoice</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200">
+<tr>
+<td class="py-4 px-6 text-sm text-gray-900">Apr 28, 2025</td>
+<td class="py-4 px-6 text-sm text-gray-900">Premium Plan - Monthly</td>
+<td class="py-4 px-6 text-sm text-gray-900">$12.99</td>
+<td class="py-4 px-6">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Paid</span>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-primary hover:text-primary/80 text-sm font-medium">Download</button>
+</td>
+</tr>
+<tr>
+<td class="py-4 px-6 text-sm text-gray-900">Mar 28, 2025</td>
+<td class="py-4 px-6 text-sm text-gray-900">Premium Plan - Monthly</td>
+<td class="py-4 px-6 text-sm text-gray-900">$12.99</td>
+<td class="py-4 px-6">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Paid</span>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-primary hover:text-primary/80 text-sm font-medium">Download</button>
+</td>
+</tr>
+<tr>
+<td class="py-4 px-6 text-sm text-gray-900">Feb 28, 2025</td>
+<td class="py-4 px-6 text-sm text-gray-900">Premium Plan - Monthly</td>
+<td class="py-4 px-6 text-sm text-gray-900">$12.99</td>
+<td class="py-4 px-6">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Paid</span>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-primary hover:text-primary/80 text-sm font-medium">Download</button>
+</td>
+</tr>
+<tr>
+<td class="py-4 px-6 text-sm text-gray-900">Jan 28, 2025</td>
+<td class="py-4 px-6 text-sm text-gray-900">Premium Plan - Monthly</td>
+<td class="py-4 px-6 text-sm text-gray-900">$12.99</td>
+<td class="py-4 px-6">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Paid</span>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-primary hover:text-primary/80 text-sm font-medium">Download</button>
+</td>
+</tr>
+<tr>
+<td class="py-4 px-6 text-sm text-gray-900">Dec 28, 2024</td>
+<td class="py-4 px-6 text-sm text-gray-900">Premium Plan - Monthly</td>
+<td class="py-4 px-6 text-sm text-gray-900">$12.99</td>
+<td class="py-4 px-6">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Paid</span>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-primary hover:text-primary/80 text-sm font-medium">Download</button>
+</td>
+</tr>
+<tr>
+<td class="py-4 px-6 text-sm text-gray-900">Nov 28, 2024</td>
+<td class="py-4 px-6 text-sm text-gray-900">Premium Plan - Monthly</td>
+<td class="py-4 px-6 text-sm text-gray-900">$12.99</td>
+<td class="py-4 px-6">
+<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Paid</span>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-primary hover:text-primary/80 text-sm font-medium">Download</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex justify-between items-center mb-8">
+<div class="text-sm text-gray-600">Showing 6 of 12 transactions</div>
+<div class="flex space-x-2">
+<button class="w-10 h-10 rounded-full bg-white border border-gray-300 flex items-center justify-center text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+<i class="ri-arrow-left-s-line"></i>
+</button>
+<button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/90 transition-colors">1</button>
+<button class="w-10 h-10 rounded-full bg-white border border-gray-300 flex items-center justify-center text-gray-700 hover:bg-gray-50 transition-colors">2</button>
+<button class="w-10 h-10 rounded-full bg-white border border-gray-300 flex items-center justify-center text-gray-700 hover:bg-gray-50 transition-colors">
+<i class="ri-arrow-right-s-line"></i>
+</button>
+</div>
+</div>
+<!-- Tax Information -->
+<div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+<h3 class="text-lg font-semibold text-gray-900 mb-4">Tax Information</h3>
+<p class="text-gray-600 text-sm mb-4">Update your tax information for accurate invoicing.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Tax ID Type</label>
+<div class="relative">
+<button class="w-full flex items-center justify-between bg-white border border-gray-300 rounded-button px-4 py-2.5 text-gray-700 hover:bg-gray-50 whitespace-nowrap text-sm">
+<span>Business (VAT/GST)</span>
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</button>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Tax ID Number</label>
+<input type="text" placeholder="Enter tax ID number" class="w-full px-4 py-2.5 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+</div>
+</div>
+<div class="mt-6">
+<button class="!rounded-button bg-primary text-white px-4 py-2 text-sm font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Save Tax Information</button>
+</div>
+</div>
+</div>
+<!-- Payment Methods Tab -->
+<div id="payment" class="tab-content">
+<!-- Current Payment Methods -->
+<div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-lg font-semibold text-gray-900">Payment Methods</h3>
+<button class="!rounded-button bg-primary text-white px-4 py-2 text-sm font-medium hover:bg-primary/90 transition-colors whitespace-nowrap" id="addPaymentBtn">Add Payment Method</button>
+</div>
+<!-- Payment Method List -->
+<div class="space-y-4">
+<!-- Visa Card -->
+<div class="border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row md:items-center md:justify-between">
+<div class="flex items-center mb-4 md:mb-0">
+<div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-800 mr-4">
+<i class="ri-visa-fill ri-xl"></i>
+</div>
+<div>
+<p class="text-gray-900 font-medium">Visa ending in 4242</p>
+<p class="text-sm text-gray-500">Expires 09/2027</p>
+</div>
+<span class="ml-4 bg-primary/10 text-primary text-xs font-medium px-2.5 py-1 rounded-full">Default</span>
+</div>
+<div class="flex space-x-3">
+<button class="!rounded-button bg-white border border-gray-300 text-gray-700 px-3 py-1.5 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Edit</button>
+<button class="!rounded-button bg-white border border-gray-300 text-gray-700 px-3 py-1.5 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap" disabled>Remove</button>
+</div>
+</div>
+<!-- Mastercard -->
+<div class="border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row md:items-center md:justify-between">
+<div class="flex items-center mb-4 md:mb-0">
+<div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center text-red-800 mr-4">
+<i class="ri-mastercard-fill ri-xl"></i>
+</div>
+<div>
+<p class="text-gray-900 font-medium">Mastercard ending in 8888</p>
+<p class="text-sm text-gray-500">Expires 12/2026</p>
+</div>
+</div>
+<div class="flex space-x-3">
+<button class="!rounded-button bg-white border border-gray-300 text-gray-700 px-3 py-1.5 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Set as Default</button>
+<button class="!rounded-button bg-white border border-gray-300 text-gray-700 px-3 py-1.5 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Edit</button>
+<button class="!rounded-button bg-white border border-gray-300 text-gray-700 px-3 py-1.5 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Remove</button>
+</div>
+</div>
+<!-- PayPal -->
+<div class="border border-gray-200 rounded-lg p-4 flex flex-col md:flex-row md:items-center md:justify-between">
+<div class="flex items-center mb-4 md:mb-0">
+<div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-800 mr-4">
+<i class="ri-paypal-fill ri-xl"></i>
+</div>
+<div>
+<p class="text-gray-900 font-medium">PayPal</p>
+<p class="text-sm text-gray-500">johndoe@example.com</p>
+</div>
+</div>
+<div class="flex space-x-3">
+<button class="!rounded-button bg-white border border-gray-300 text-gray-700 px-3 py-1.5 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Set as Default</button>
+<button class="!rounded-button bg-white border border-gray-300 text-gray-700 px-3 py-1.5 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Edit</button>
+<button class="!rounded-button bg-white border border-gray-300 text-gray-700 px-3 py-1.5 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Remove</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Billing Address -->
+<div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+<h3 class="text-lg font-semibold text-gray-900 mb-6">Billing Address</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+<input type="text" value="John Doe" class="w-full px-4 py-2.5 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Company (Optional)</label>
+<input type="text" value="Acme Inc." class="w-full px-4 py-2.5 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Address Line 1</label>
+<input type="text" value="123 Main Street" class="w-full px-4 py-2.5 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Address Line 2 (Optional)</label>
+<input type="text" value="Suite 101" class="w-full px-4 py-2.5 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">City</label>
+<input type="text" value="San Francisco" class="w-full px-4 py-2.5 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">State / Province</label>
+<input type="text" value="California" class="w-full px-4 py-2.5 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">ZIP / Postal Code</label>
+<input type="text" value="94103" class="w-full px-4 py-2.5 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Country</label>
+<div class="relative">
+<button class="w-full flex items-center justify-between bg-white border border-gray-300 rounded-button px-4 py-2.5 text-gray-700 hover:bg-gray-50 whitespace-nowrap text-sm">
+<span>United States</span>
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-6">
+<button class="!rounded-button bg-primary text-white px-4 py-2 text-sm font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Save Billing Address</button>
+</div>
+</div>
+<!-- Billing Preferences -->
+<div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+<h3 class="text-lg font-semibold text-gray-900 mb-6">Billing Preferences</h3>
+<div class="space-y-4">
+<div>
+<label class="flex items-center">
+<input type="checkbox" class="custom-checkbox mr-2" checked>
+<span class="text-sm text-gray-700">Email me my invoice</span>
+</label>
+</div>
+<div>
+<label class="flex items-center">
+<input type="checkbox" class="custom-checkbox mr-2" checked>
+<span class="text-sm text-gray-700">Send payment reminders</span>
+</label>
+</div>
+<div>
+<label class="flex items-center">
+<input type="checkbox" class="custom-checkbox mr-2">
+<span class="text-sm text-gray-700">Auto-renew my subscription</span>
+</label>
+</div>
+</div>
+<div class="mt-6">
+<button class="!rounded-button bg-primary text-white px-4 py-2 text-sm font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Save Preferences</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Add Payment Method Modal (Hidden by default) -->
+<div id="paymentModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+<div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-bold text-gray-900">Add Payment Method</h3>
+<button id="closePaymentModal" class="w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center text-gray-500">
+<i class="ri-close-line"></i>
+</button>
+</div>
+<!-- Payment Method Tabs -->
+<div class="mb-6">
+<div class="flex p-1 bg-gray-100 rounded-full">
+<button class="flex-1 px-4 py-2 rounded-full bg-white shadow-sm text-gray-900 font-medium text-sm">Credit Card</button>
+<button class="flex-1 px-4 py-2 rounded-full text-gray-600 hover:text-gray-900 text-sm">PayPal</button>
+<button class="flex-1 px-4 py-2 rounded-full text-gray-600 hover:text-gray-900 text-sm">Apple Pay</button>
+</div>
+</div>
+<!-- Credit Card Form -->
+<div class="space-y-4 mb-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
+<div class="relative">
+<input type="text" placeholder="1234 5678 9012 3456" class="w-full pl-10 pr-4 py-2.5 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+<div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-bank-card-line"></i>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Expiration Date</label>
+<input type="text" placeholder="MM/YY" class="w-full px-4 py-2.5 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">CVC</label>
+<div class="relative">
+<input type="text" placeholder="123" class="w-full pl-10 pr-4 py-2.5 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+<div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-lock-line"></i>
+</div>
+<div class="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400 custom-tooltip">
+<i class="ri-question-line"></i>
+<span class="tooltip-text">The 3-digit security code on the back of your card</span>
+</div>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Name on Card</label>
+<input type="text" placeholder="John Doe" class="w-full px-4 py-2.5 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+</div>
+<div>
+<label class="flex items-center">
+<input type="checkbox" class="custom-checkbox mr-2" checked>
+<span class="text-sm text-gray-700">Set as default payment method</span>
+</label>
+</div>
+</div>
+<div class="flex space-x-3">
+<button id="cancelPaymentBtn" class="flex-1 !rounded-button bg-white border border-gray-300 text-gray-700 px-4 py-2.5 font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Cancel</button>
+<button class="flex-1 !rounded-button bg-primary text-white px-4 py-2.5 font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Add Card</button>
+</div>
+</div>
+</div>
+<!-- Cancel Subscription Modal (Hidden by default) -->
+<div id="cancelModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+<div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+<div class="text-center mb-6">
+<div class="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center">
+<div class="w-8 h-8 flex items-center justify-center text-red-500">
+<i class="ri-close-circle-line ri-xl"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-2">Cancel Subscription?</h3>
+<p class="text-gray-600">Are you sure you want to cancel your Premium subscription? You'll lose access to premium features at the end of your billing period on May 28, 2025.</p>
+</div>
+<div class="space-y-4 mb-6">
+<div class="bg-gray-50 rounded-lg p-4">
+<h4 class="text-sm font-medium text-gray-900 mb-2">What happens when you cancel:</h4>
+<ul class="space-y-2 text-sm text-gray-600">
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-gray-500">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<span>You'll continue to have access to premium features until May 28, 2025</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-gray-500">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<span>Your account will be downgraded to the Free plan after that date</span>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 flex-shrink-0 mr-2 flex items-center justify-center text-gray-500">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<span>You won't be charged again</span>
+</li>
+</ul>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Reason for cancellation (Optional)</label>
+<select class="w-full px-4 py-2.5 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm pr-8">
+<option>Please select a reason</option>
+<option>Too expensive</option>
+<option>Not using it enough</option>
+<option>Missing features</option>
+<option>Found a better alternative</option>
+<option>Technical issues</option>
+<option>Other</option>
+</select>
+</div>
+</div>
+<div class="flex space-x-3">
+<button class="flex-1 !rounded-button bg-white border border-gray-300 text-gray-700 px-4 py-2.5 font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Keep Subscription</button>
+<button class="flex-1 !rounded-button bg-red-500 text-white px-4 py-2.5 font-medium hover:bg-red-600 transition-colors whitespace-nowrap">Cancel Subscription</button>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+<div>
+<a href="#" class="text-3xl font-['Pacifico'] text-white mb-4 inline-block">logo</a>
+<p class="text-gray-400 mb-6">Making digital greetings personal and meaningful since 2020.</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+<i class="ri-twitter-x-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+<i class="ri-instagram-fill"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+<i class="ri-pinterest-fill"></i>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Templates</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">How It Works</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Gift Cards</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Company</h3>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Press</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Support</h3>
+<ul class="space-y-3">
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Accessibility</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 mb-4 md:mb-0">&copy; 2025 E-Greeting Platform. All rights reserved.</p>
+<div class="flex items-center space-x-4">
+<div class="w-8 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-visa-fill ri-lg"></i>
+</div>
+<div class="w-8 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-mastercard-fill ri-lg"></i>
+</div>
+<div class="w-8 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-paypal-fill ri-lg"></i>
+</div>
+<div class="w-8 h-5 flex items-center justify-center text-gray-400">
+<i class="ri-apple-fill ri-lg"></i>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Tab switching
+const tabButtons = document.querySelectorAll('.tab-button');
+const tabContents = document.querySelectorAll('.tab-content');
+tabButtons.forEach(button => {
+button.addEventListener('click', () => {
+const tabId = button.getAttribute('data-tab');
+// Remove active class from all buttons and contents
+tabButtons.forEach(btn => btn.classList.remove('border-primary', 'text-primary'));
+tabButtons.forEach(btn => btn.classList.add('border-transparent', 'text-gray-500'));
+tabContents.forEach(content => content.classList.remove('active'));
+// Add active class to clicked button and corresponding content
+button.classList.add('border-primary', 'text-primary');
+button.classList.remove('border-transparent', 'text-gray-500');
+document.getElementById(tabId).classList.add('active');
+});
+});
+// Billing toggle
+const billingToggle = document.getElementById('billingToggle');
+if (billingToggle) {
+billingToggle.addEventListener('change', () => {
+const premiumBillingPeriod = document.getElementById('premiumBillingPeriod');
+const businessBillingPeriod = document.getElementById('businessBillingPeriod');
+if (billingToggle.checked) {
+premiumBillingPeriod.textContent = 'Billed annually ($124.70/year)';
+businessBillingPeriod.textContent = 'Billed annually ($287.90/year)';
+} else {
+premiumBillingPeriod.textContent = 'Billed monthly';
+businessBillingPeriod.textContent = 'Billed monthly';
+}
+});
+}
+// FAQ toggle
+window.toggleFaq = function(button) {
+const content = button.nextElementSibling;
+const icon = button.querySelector('.faq-icon');
+if (content.classList.contains('hidden')) {
+content.classList.remove('hidden');
+icon.style.transform = 'rotate(180deg)';
+} else {
+content.classList.add('hidden');
+icon.style.transform = 'rotate(0)';
+}
+};
+// Payment modal
+const addPaymentBtn = document.getElementById('addPaymentBtn');
+const paymentModal = document.getElementById('paymentModal');
+const closePaymentModal = document.getElementById('closePaymentModal');
+const cancelPaymentBtn = document.getElementById('cancelPaymentBtn');
+if (addPaymentBtn && paymentModal) {
+addPaymentBtn.addEventListener('click', () => {
+paymentModal.classList.remove('hidden');
+});
+}
+if (closePaymentModal && paymentModal) {
+closePaymentModal.addEventListener('click', () => {
+paymentModal.classList.add('hidden');
+});
+}
+if (cancelPaymentBtn && paymentModal) {
+cancelPaymentBtn.addEventListener('click', () => {
+paymentModal.classList.add('hidden');
+});
+}
+// Initialize usage chart
+const usageChartElement = document.getElementById('usageChart');
+if (usageChartElement) {
+const usageChart = echarts.init(usageChartElement);
+const option = {
+animation: false,
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.9)',
+borderColor: '#e5e7eb',
+borderWidth: 1,
+textStyle: {
+color: '#1f2937'
+},
+formatter: function(params) {
+let result = params[0].name + '<br/>';
+params.forEach(param => {
+result += `<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:${param.color};"></span> ${param.seriesName}: ${param.value} cards<br/>`;
+});
+return result;
+}
+},
+legend: {
+data: ['Cards Created', 'Cards Sent'],
+bottom: 0,
+textStyle: {
+color: '#1f2937'
+}
+},
+grid: {
+left: '0',
+right: '0',
+top: '10',
+bottom: '40',
+containLabel: true
+},
+xAxis: {
+type: 'category',
+boundaryGap: false,
+data: ['Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'],
+axisLine: {
+lineStyle: {
+color: '#e5e7eb'
+}
+},
+axisLabel: {
+color: '#6b7280'
+}
+},
+yAxis: {
+type: 'value',
+axisLine: {
+show: false
+},
+axisLabel: {
+color: '#6b7280'
+},
+splitLine: {
+lineStyle: {
+color: '#f3f4f6'
+}
+}
+},
+series: [
+{
+name: 'Cards Created',
+type: 'line',
+smooth: true,
+lineStyle: {
+width: 3,
+color: 'rgba(87, 181, 231, 1)'
+},
+symbol: 'none',
+areaStyle: {
+color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+{
+offset: 0,
+color: 'rgba(87, 181, 231, 0.2)'
+},
+{
+offset: 1,
+color: 'rgba(87, 181, 231, 0)'
+}
+])
+},
+data: [10, 12, 15, 14, 16, 18]
+},
+{
+name: 'Cards Sent',
+type: 'line',
+smooth: true,
+lineStyle: {
+width: 3,
+color: 'rgba(141, 211, 199, 1)'
+},
+symbol: 'none',
+areaStyle: {
+color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+{
+offset: 0,
+color: 'rgba(141, 211, 199, 0.2)'
+},
+{
+offset: 1,
+color: 'rgba(141, 211, 199, 0)'
+}
+])
+},
+data: [8, 10, 12, 11, 13, 15]
+}
+]
+};
+usageChart.setOption(option);
+// Resize chart when window is resized
+window.addEventListener('resize', function() {
+usageChart.resize();
+});
+}
+});
+</script>
+</body>
+</html>

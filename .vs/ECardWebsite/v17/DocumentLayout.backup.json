@@ -203,8 +203,8 @@
               "Title": "ECardTemplateController.cs",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Controllers\\ECardTemplateController.cs",
               "RelativeDocumentMoniker": "ECardWebsite\\Controllers\\ECardTemplateController.cs",
-              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Controllers\\ECardTemplateController.cs*",
-              "RelativeToolTip": "ECardWebsite\\Controllers\\ECardTemplateController.cs*",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Controllers\\ECardTemplateController.cs",
+              "RelativeToolTip": "ECardWebsite\\Controllers\\ECardTemplateController.cs",
               "ViewState": "AgIAAKEAAAAAAAAAAAAQwKwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-25T05:03:24.344Z",
@@ -505,6 +505,16 @@
               "ViewState": "AgIAAAQAAAAAAAAAAABBwBIAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2025-04-23T05:09:29.364Z"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 150,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
             }
           ]
         }

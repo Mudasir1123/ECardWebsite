@@ -1,0 +1,37 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model ECardWebsite.Models.Offer
+
+@{
+    ViewData["Title"] = "Delete Offer";
+}
+
+<h1>Delete Offer</h1>
+
+<h3>Are you sure you want to delete this offer?</h3>
+<div>
+    <h4>@Model.Title</h4>
+    <dl class="row">
+        <dt class="col-sm-2">Title</dt>
+        <dd class="col-sm-10">@Model.Title</dd>
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+        <dt class="col-sm-2">Discount (%)</dt>
+        <dd class="col-sm-10">@Model.DiscountPercentage</dd>
+        <dt class="col-sm-2">Start Date</dt>
+        <dd class="col-sm-10">@Model.StartDate.ToString("yyyy-MM-dd")</dd>
+        <dt class="col-sm-2">End Date</dt>
+        <dd class="col-sm-10">@Model.EndDate.ToString("yyyy-MM-dd")</dd>
+        <dt class="col-sm-2">Active</dt>
+        <dd class="col-sm-10">@(Model.IsActive ? "Yes" : "No")</dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="OfferId" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<ECardWebsite.Models.Offer>
+
+@{
+    ViewData["Title"] = "Manage Offers";
+}
+
+<h1>Manage Offers</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New Offer</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Discount (%)</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var offer in Model)
+        {
+            <tr>
+                <td>@offer.Title</td>
+                <td>@offer.Description</td>
+                <td>@offer.DiscountPercentage</td>
+                <td>@offer.StartDate.ToString("yyyy-MM-dd")</td>
+                <td>@offer.EndDate.ToString("yyyy-MM-dd")</td>
+                <td>@(offer.IsActive ? "Yes" : "No")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-offerId="@offer.OfferId" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-offerId="@offer.OfferId" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
