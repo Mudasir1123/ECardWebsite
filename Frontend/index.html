@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Greeting - Personalized Digital Greeting Cards</title>
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-    <script>tailwind.config={theme:{extend:{colors:{primary:'#4f46e5',secondary:'#f59e0b'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: '#4f46e5', secondary: '#f59e0b' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
     <style>
-        :where([class^="ri-"])::before { content: "\f3c2"; }
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
         body {
             font-family: 'Inter', sans-serif;
         }
+
         input[type="number"]::-webkit-inner-spin-button,
         input[type="number"]::-webkit-outer-spin-button {
             -webkit-appearance: none;
             margin: 0;
         }
+
         .custom-checkbox {
             appearance: none;
             width: 1.25rem;
@@ -31,10 +37,12 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
+
         .custom-checkbox:checked {
             background-color: #4f46e5;
             border-color: #4f46e5;
         }
+
         .custom-checkbox:checked::after {
             content: '';
             position: absolute;
@@ -46,17 +54,20 @@
             border-width: 0 2px 2px 0;
             transform: rotate(45deg);
         }
+
         .custom-switch {
             position: relative;
             display: inline-block;
             width: 48px;
             height: 24px;
         }
+
         .custom-switch input {
             opacity: 0;
             width: 0;
             height: 0;
         }
+
         .switch-slider {
             position: absolute;
             cursor: pointer;
@@ -68,6 +79,7 @@
             transition: .4s;
             border-radius: 24px;
         }
+
         .switch-slider:before {
             position: absolute;
             content: "";
@@ -79,12 +91,15 @@
             transition: .4s;
             border-radius: 50%;
         }
-        input:checked + .switch-slider {
+
+        input:checked+.switch-slider {
             background-color: #4f46e5;
         }
-        input:checked + .switch-slider:before {
+
+        input:checked+.switch-slider:before {
             transform: translateX(24px);
         }
+
         .range-slider {
             -webkit-appearance: none;
             width: 100%;
@@ -93,6 +108,7 @@
             background: #e5e7eb;
             outline: none;
         }
+
         .range-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
@@ -102,6 +118,7 @@
             background: #4f46e5;
             cursor: pointer;
         }
+
         .range-slider::-moz-range-thumb {
             width: 18px;
             height: 18px;
@@ -109,6 +126,7 @@
             background: #4f46e5;
             cursor: pointer;
         }
+
         .custom-radio {
             appearance: none;
             width: 1.25rem;
@@ -119,9 +137,11 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
+
         .custom-radio:checked {
             border-color: #4f46e5;
         }
+
         .custom-radio:checked::after {
             content: '';
             position: absolute;
@@ -135,49 +155,63 @@
         }
     </style>
 </head>
+
 <body class="bg-white min-h-screen">
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-white shadow-sm">
         <div class="container mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center">
-                <a href="#" class="text-3xl font-['Pacifico'] text-primary">logo</a>
+                <a href="./index.html" class="text-3xl font-['Pacifico'] text-primary">logo</a>
                 <nav class="hidden md:flex ml-10 space-x-8">
-                    <a href="#" class="text-gray-900 font-medium hover:text-primary transition-colors">Templates</a>
-                    <a href="#" class="text-gray-600 hover:text-primary transition-colors">My Cards</a>
-                    <a href="#" class="text-gray-600 hover:text-primary transition-colors">Subscriptions</a>
-                    <a href="#" class="text-gray-600 hover:text-primary transition-colors">Pricing</a>
+                    <a href="./index.html"
+                        class="text-gray-900 font-medium hover:text-primary transition-colors">Templates</a>
+                    <a href="./card.html" class="text-gray-600 hover:text-primary transition-colors">My Cards</a>
+                    <a href="./subscribe.html"
+                        class="text-gray-600 hover:text-primary transition-colors">Subscriptions</a>
+                    <a href="./price.html" class="text-gray-600 hover:text-primary transition-colors">Pricing</a>
                 </nav>
             </div>
             <div class="flex items-center space-x-4">
                 <div class="relative hidden md:block">
-                    <input type="text" placeholder="Search templates..." class="pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm w-64">
-                    <div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400">
+                    <input type="text" placeholder="Search templates..."
+                        class="pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm w-64">
+                    <div
+                        class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400">
                         <i class="ri-search-line"></i>
                     </div>
                 </div>
-                <a href="#" class="!rounded-button bg-white text-gray-700 border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Log In</a>
-                <a href="#" class="!rounded-button bg-primary text-white px-4 py-2 text-sm font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Sign Up</a>
+                <a href="./login.html"
+                    class="!rounded-button bg-white text-gray-700 border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">Log
+                    In</a>
+                <a href="./signup.html"
+                    class="!rounded-button bg-primary text-white px-4 py-2 text-sm font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Sign
+                    Up</a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="relative overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://readdy.ai/api/search-image?query=A%20modern%2C%20elegant%20digital%20greeting%20card%20platform%20with%20a%20soft%20gradient%20background.%20The%20right%20side%20shows%20beautifully%20designed%20greeting%20cards%20floating%20in%203D%20space%20with%20soft%20shadows.%20The%20left%20side%20has%20clean%20space%20for%20text.%20The%20overall%20style%20is%20minimalist%20with%20soft%20pastel%20colors%20and%20subtle%20design%20elements.%20Professional%2C%20high-quality%20digital%20illustration%20with%20smooth%20transitions%20between%20elements.&width=1920&height=1080&seq=1&orientation=landscape');">
+        <div class="absolute inset-0 bg-cover bg-center"
+            style="background-image: url('https://readdy.ai/api/search-image?query=A%20modern%2C%20elegant%20digital%20greeting%20card%20platform%20with%20a%20soft%20gradient%20background.%20The%20right%20side%20shows%20beautifully%20designed%20greeting%20cards%20floating%20in%203D%20space%20with%20soft%20shadows.%20The%20left%20side%20has%20clean%20space%20for%20text.%20The%20overall%20style%20is%20minimalist%20with%20soft%20pastel%20colors%20and%20subtle%20design%20elements.%20Professional%2C%20high-quality%20digital%20illustration%20with%20smooth%20transitions%20between%20elements.&width=1920&height=1080&seq=1&orientation=landscape');">
             <div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
         </div>
         <div class="container mx-auto px-4 py-20 md:py-32 relative">
             <div class="max-w-2xl">
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Express Your Feelings with Beautiful Digital Greetings</h1>
-                <p class="text-lg md:text-xl text-gray-700 mb-8">Create personalized e-cards for any occasion with our easy-to-use platform. Send instantly or schedule for the perfect moment.</p>
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Express Your Feelings with Beautiful
+                    Digital Greetings</h1>
+                <p class="text-lg md:text-xl text-gray-700 mb-8">Create personalized e-cards for any occasion with our
+                    easy-to-use platform. Send instantly or schedule for the perfect moment.</p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#" class="!rounded-button bg-primary text-white px-6 py-3 text-base font-medium hover:bg-primary/90 transition-colors whitespace-nowrap flex items-center justify-center">
+                    <a href="#"
+                        class="!rounded-button bg-primary text-white px-6 py-3 text-base font-medium hover:bg-primary/90 transition-colors whitespace-nowrap flex items-center justify-center">
                         <span>Browse Templates</span>
                         <div class="w-5 h-5 ml-2 flex items-center justify-center">
                             <i class="ri-arrow-right-line"></i>
                         </div>
                     </a>
-                    <a href="#" class="!rounded-button bg-white text-gray-800 border border-gray-300 px-6 py-3 text-base font-medium hover:bg-gray-50 transition-colors whitespace-nowrap flex items-center justify-center">
+                    <a href="#"
+                        class="!rounded-button bg-white text-gray-800 border border-gray-300 px-6 py-3 text-base font-medium hover:bg-gray-50 transition-colors whitespace-nowrap flex items-center justify-center">
                         <span>How It Works</span>
                         <div class="w-5 h-5 ml-2 flex items-center justify-center">
                             <i class="ri-play-circle-line"></i>
@@ -193,26 +227,29 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col items-center mb-12">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Find the Perfect Template</h2>
-                <p class="text-lg text-gray-600 max-w-2xl text-center">Browse our extensive collection of professionally designed templates for any occasion</p>
+                <p class="text-lg text-gray-600 max-w-2xl text-center">Browse our extensive collection of professionally
+                    designed templates for any occasion</p>
             </div>
-            
+
             <!-- Category Tabs -->
             <div class="flex justify-center mb-8">
                 <div class="inline-flex p-1 bg-gray-100 rounded-full">
-                    <button class="px-6 py-2 rounded-full bg-white shadow-sm text-gray-900 font-medium">All Categories</button>
+                    <button class="px-6 py-2 rounded-full bg-white shadow-sm text-gray-900 font-medium">All
+                        Categories</button>
                     <button class="px-6 py-2 rounded-full text-gray-600 hover:text-gray-900">Birthdays</button>
                     <button class="px-6 py-2 rounded-full text-gray-600 hover:text-gray-900">Holidays</button>
                     <button class="px-6 py-2 rounded-full text-gray-600 hover:text-gray-900">Thank You</button>
                     <button class="px-6 py-2 rounded-full text-gray-600 hover:text-gray-900">Congratulations</button>
                 </div>
             </div>
-            
+
             <!-- Sort and Filter -->
             <div class="flex flex-col md:flex-row justify-between items-center mb-8">
                 <div class="flex items-center space-x-4 mb-4 md:mb-0">
                     <span class="text-gray-700 font-medium">Filter by:</span>
                     <div class="relative">
-                        <button class="flex items-center space-x-2 bg-white border border-gray-300 rounded-button px-4 py-2 text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                        <button
+                            class="flex items-center space-x-2 bg-white border border-gray-300 rounded-button px-4 py-2 text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                             <span>Occasion</span>
                             <div class="w-4 h-4 flex items-center justify-center">
                                 <i class="ri-arrow-down-s-line"></i>
@@ -220,7 +257,8 @@
                         </button>
                     </div>
                     <div class="relative">
-                        <button class="flex items-center space-x-2 bg-white border border-gray-300 rounded-button px-4 py-2 text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                        <button
+                            class="flex items-center space-x-2 bg-white border border-gray-300 rounded-button px-4 py-2 text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                             <span>Style</span>
                             <div class="w-4 h-4 flex items-center justify-center">
                                 <i class="ri-arrow-down-s-line"></i>
@@ -229,7 +267,8 @@
                     </div>
                 </div>
                 <div class="relative">
-                    <button class="flex items-center space-x-2 bg-white border border-gray-300 rounded-button px-4 py-2 text-gray-700 hover:bg-gray-50 whitespace-nowrap">
+                    <button
+                        class="flex items-center space-x-2 bg-white border border-gray-300 rounded-button px-4 py-2 text-gray-700 hover:bg-gray-50 whitespace-nowrap">
                         <span>Sort by: Newest</span>
                         <div class="w-4 h-4 flex items-center justify-center">
                             <i class="ri-arrow-down-s-line"></i>
@@ -243,8 +282,11 @@
                 <!-- Template 1 -->
                 <div class="bg-white rounded-lg shadow-sm overflow-hidden group hover:shadow-md transition-shadow">
                     <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=A%20modern%2C%20elegant%20birthday%20greeting%20card%20design%20with%20soft%20pastel%20colors.%20The%20card%20features%20a%20minimalist%20cake%20with%20lit%20candles%20on%20a%20clean%20background.%20Professional%20digital%20design%20with%20subtle%20patterns%20and%20elegant%20typography%20saying%20Happy%20Birthday.%20The%20style%20is%20contemporary%20and%20sophisticated%20with%20a%20clean%20layout.&width=600&height=450&seq=2&orientation=landscape" alt="Birthday Card Template" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute top-2 right-2 bg-white/90 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <img src="https://readdy.ai/api/search-image?query=A%20modern%2C%20elegant%20birthday%20greeting%20card%20design%20with%20soft%20pastel%20colors.%20The%20card%20features%20a%20minimalist%20cake%20with%20lit%20candles%20on%20a%20clean%20background.%20Professional%20digital%20design%20with%20subtle%20patterns%20and%20elegant%20typography%20saying%20Happy%20Birthday.%20The%20style%20is%20contemporary%20and%20sophisticated%20with%20a%20clean%20layout.&width=600&height=450&seq=2&orientation=landscape"
+                            alt="Birthday Card Template"
+                            class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+                        <div
+                            class="absolute top-2 right-2 bg-white/90 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                             <div class="w-5 h-5 flex items-center justify-center text-gray-700 hover:text-primary">
                                 <i class="ri-heart-line"></i>
                             </div>
@@ -265,15 +307,20 @@
                             <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">Birthday</span>
                             <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">Animated</span>
                         </div>
-                        <button class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap">Customize Now</button>
+                        <button
+                            class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap">Customize
+                            Now</button>
                     </div>
                 </div>
 
                 <!-- Template 2 -->
                 <div class="bg-white rounded-lg shadow-sm overflow-hidden group hover:shadow-md transition-shadow">
                     <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=A%20modern%2C%20elegant%20thank%20you%20greeting%20card%20design%20with%20soft%20blue%20and%20gold%20colors.%20The%20card%20features%20a%20minimalist%20floral%20pattern%20with%20elegant%20typography%20saying%20Thank%20You.%20Professional%20digital%20design%20with%20subtle%20textures%20and%20a%20sophisticated%20layout.%20The%20style%20is%20contemporary%20and%20refined%20with%20a%20clean%20aesthetic.&width=600&height=450&seq=3&orientation=landscape" alt="Thank You Card Template" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute top-2 right-2 bg-white/90 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <img src="https://readdy.ai/api/search-image?query=A%20modern%2C%20elegant%20thank%20you%20greeting%20card%20design%20with%20soft%20blue%20and%20gold%20colors.%20The%20card%20features%20a%20minimalist%20floral%20pattern%20with%20elegant%20typography%20saying%20Thank%20You.%20Professional%20digital%20design%20with%20subtle%20textures%20and%20a%20sophisticated%20layout.%20The%20style%20is%20contemporary%20and%20refined%20with%20a%20clean%20aesthetic.&width=600&height=450&seq=3&orientation=landscape"
+                            alt="Thank You Card Template"
+                            class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+                        <div
+                            class="absolute top-2 right-2 bg-white/90 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                             <div class="w-5 h-5 flex items-center justify-center text-gray-700 hover:text-primary">
                                 <i class="ri-heart-line"></i>
                             </div>
@@ -294,15 +341,20 @@
                             <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">Thank You</span>
                             <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">Elegant</span>
                         </div>
-                        <button class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap">Customize Now</button>
+                        <button
+                            class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap">Customize
+                            Now</button>
                     </div>
                 </div>
 
                 <!-- Template 3 -->
                 <div class="bg-white rounded-lg shadow-sm overflow-hidden group hover:shadow-md transition-shadow">
                     <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=A%20modern%2C%20elegant%20wedding%20congratulations%20greeting%20card%20design%20with%20soft%20pastel%20colors.%20The%20card%20features%20minimalist%20floral%20elements%20with%20two%20wedding%20rings.%20Professional%20digital%20design%20with%20subtle%20textures%20and%20elegant%20typography%20saying%20Congratulations.%20The%20style%20is%20romantic%20and%20sophisticated%20with%20a%20clean%20layout.&width=600&height=450&seq=4&orientation=landscape" alt="Wedding Card Template" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute top-2 right-2 bg-white/90 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <img src="https://readdy.ai/api/search-image?query=A%20modern%2C%20elegant%20wedding%20congratulations%20greeting%20card%20design%20with%20soft%20pastel%20colors.%20The%20card%20features%20minimalist%20floral%20elements%20with%20two%20wedding%20rings.%20Professional%20digital%20design%20with%20subtle%20textures%20and%20elegant%20typography%20saying%20Congratulations.%20The%20style%20is%20romantic%20and%20sophisticated%20with%20a%20clean%20layout.&width=600&height=450&seq=4&orientation=landscape"
+                            alt="Wedding Card Template"
+                            class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+                        <div
+                            class="absolute top-2 right-2 bg-white/90 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                             <div class="w-5 h-5 flex items-center justify-center text-gray-700 hover:text-primary">
                                 <i class="ri-heart-line"></i>
                             </div>
@@ -324,15 +376,20 @@
                             <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">Wedding</span>
                             <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">Premium</span>
                         </div>
-                        <button class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap">Customize Now</button>
+                        <button
+                            class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap">Customize
+                            Now</button>
                     </div>
                 </div>
 
                 <!-- Template 4 -->
                 <div class="bg-white rounded-lg shadow-sm overflow-hidden group hover:shadow-md transition-shadow">
                     <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=A%20modern%2C%20elegant%20holiday%20greeting%20card%20design%20with%20winter%20theme.%20The%20card%20features%20minimalist%20snowflakes%20and%20festive%20elements%20on%20a%20soft%20blue%20background.%20Professional%20digital%20design%20with%20subtle%20textures%20and%20elegant%20typography%20saying%20Happy%20Holidays.%20The%20style%20is%20contemporary%20and%20sophisticated%20with%20a%20clean%20layout.&width=600&height=450&seq=5&orientation=landscape" alt="Holiday Card Template" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute top-2 right-2 bg-white/90 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <img src="https://readdy.ai/api/search-image?query=A%20modern%2C%20elegant%20holiday%20greeting%20card%20design%20with%20winter%20theme.%20The%20card%20features%20minimalist%20snowflakes%20and%20festive%20elements%20on%20a%20soft%20blue%20background.%20Professional%20digital%20design%20with%20subtle%20textures%20and%20elegant%20typography%20saying%20Happy%20Holidays.%20The%20style%20is%20contemporary%20and%20sophisticated%20with%20a%20clean%20layout.&width=600&height=450&seq=5&orientation=landscape"
+                            alt="Holiday Card Template"
+                            class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+                        <div
+                            class="absolute top-2 right-2 bg-white/90 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                             <div class="w-5 h-5 flex items-center justify-center text-gray-700 hover:text-primary">
                                 <i class="ri-heart-line"></i>
                             </div>
@@ -353,15 +410,20 @@
                             <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">Holiday</span>
                             <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">Winter</span>
                         </div>
-                        <button class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap">Customize Now</button>
+                        <button
+                            class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap">Customize
+                            Now</button>
                     </div>
                 </div>
 
                 <!-- Template 5 -->
                 <div class="bg-white rounded-lg shadow-sm overflow-hidden group hover:shadow-md transition-shadow">
                     <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=A%20modern%2C%20elegant%20baby%20shower%20greeting%20card%20design%20with%20soft%20pastel%20colors.%20The%20card%20features%20minimalist%20baby%20elements%20like%20a%20stroller%2C%20pacifier%2C%20and%20baby%20clothes%20on%20a%20gentle%20background.%20Professional%20digital%20design%20with%20subtle%20textures%20and%20elegant%20typography%20saying%20Congratulations.%20The%20style%20is%20contemporary%20and%20sweet%20with%20a%20clean%20layout.&width=600&height=450&seq=6&orientation=landscape" alt="Baby Shower Card Template" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute top-2 right-2 bg-white/90 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <img src="https://readdy.ai/api/search-image?query=A%20modern%2C%20elegant%20baby%20shower%20greeting%20card%20design%20with%20soft%20pastel%20colors.%20The%20card%20features%20minimalist%20baby%20elements%20like%20a%20stroller%2C%20pacifier%2C%20and%20baby%20clothes%20on%20a%20gentle%20background.%20Professional%20digital%20design%20with%20subtle%20textures%20and%20elegant%20typography%20saying%20Congratulations.%20The%20style%20is%20contemporary%20and%20sweet%20with%20a%20clean%20layout.&width=600&height=450&seq=6&orientation=landscape"
+                            alt="Baby Shower Card Template"
+                            class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+                        <div
+                            class="absolute top-2 right-2 bg-white/90 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                             <div class="w-5 h-5 flex items-center justify-center text-gray-700 hover:text-primary">
                                 <i class="ri-heart-line"></i>
                             </div>
@@ -382,20 +444,26 @@
                             <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">Baby</span>
                             <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">Celebration</span>
                         </div>
-                        <button class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap">Customize Now</button>
+                        <button
+                            class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap">Customize
+                            Now</button>
                     </div>
                 </div>
 
                 <!-- Template 6 -->
                 <div class="bg-white rounded-lg shadow-sm overflow-hidden group hover:shadow-md transition-shadow">
                     <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=A%20modern%2C%20elegant%20anniversary%20greeting%20card%20design%20with%20romantic%20elements.%20The%20card%20features%20minimalist%20hearts%20and%20floral%20elements%20with%20gold%20accents.%20Professional%20digital%20design%20with%20subtle%20textures%20and%20elegant%20typography%20saying%20Happy%20Anniversary.%20The%20style%20is%20romantic%20and%20sophisticated%20with%20a%20clean%20layout.&width=600&height=450&seq=7&orientation=landscape" alt="Anniversary Card Template" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute top-2 right-2 bg-white/90 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <img src="https://readdy.ai/api/search-image?query=A%20modern%2C%20elegant%20anniversary%20greeting%20card%20design%20with%20romantic%20elements.%20The%20card%20features%20minimalist%20hearts%20and%20floral%20elements%20with%20gold%20accents.%20Professional%20digital%20design%20with%20subtle%20textures%20and%20elegant%20typography%20saying%20Happy%20Anniversary.%20The%20style%20is%20romantic%20and%20sophisticated%20with%20a%20clean%20layout.&width=600&height=450&seq=7&orientation=landscape"
+                            alt="Anniversary Card Template"
+                            class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+                        <div
+                            class="absolute top-2 right-2 bg-white/90 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                             <div class="w-5 h-5 flex items-center justify-center text-gray-700 hover:text-primary">
                                 <i class="ri-heart-line"></i>
                             </div>
                         </div>
-                        <div class="absolute top-0 left-0 bg-primary text-white text-xs font-medium px-3 py-1">POPULAR</div>
+                        <div class="absolute top-0 left-0 bg-primary text-white text-xs font-medium px-3 py-1">POPULAR
+                        </div>
                     </div>
                     <div class="p-4">
                         <div class="flex justify-between items-start mb-2">
@@ -412,15 +480,20 @@
                             <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">Anniversary</span>
                             <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">Romantic</span>
                         </div>
-                        <button class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap">Customize Now</button>
+                        <button
+                            class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap">Customize
+                            Now</button>
                     </div>
                 </div>
 
                 <!-- Template 7 -->
                 <div class="bg-white rounded-lg shadow-sm overflow-hidden group hover:shadow-md transition-shadow">
                     <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=A%20modern%2C%20elegant%20graduation%20congratulations%20greeting%20card%20design.%20The%20card%20features%20minimalist%20graduation%20cap%20and%20diploma%20elements%20on%20a%20clean%20background.%20Professional%20digital%20design%20with%20subtle%20textures%20and%20elegant%20typography%20saying%20Congratulations%20Graduate.%20The%20style%20is%20contemporary%20and%20sophisticated%20with%20a%20clean%20layout.&width=600&height=450&seq=8&orientation=landscape" alt="Graduation Card Template" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute top-2 right-2 bg-white/90 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <img src="https://readdy.ai/api/search-image?query=A%20modern%2C%20elegant%20graduation%20congratulations%20greeting%20card%20design.%20The%20card%20features%20minimalist%20graduation%20cap%20and%20diploma%20elements%20on%20a%20clean%20background.%20Professional%20digital%20design%20with%20subtle%20textures%20and%20elegant%20typography%20saying%20Congratulations%20Graduate.%20The%20style%20is%20contemporary%20and%20sophisticated%20with%20a%20clean%20layout.&width=600&height=450&seq=8&orientation=landscape"
+                            alt="Graduation Card Template"
+                            class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+                        <div
+                            class="absolute top-2 right-2 bg-white/90 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                             <div class="w-5 h-5 flex items-center justify-center text-gray-700 hover:text-primary">
                                 <i class="ri-heart-line"></i>
                             </div>
@@ -441,15 +514,20 @@
                             <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">Graduation</span>
                             <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">Achievement</span>
                         </div>
-                        <button class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap">Customize Now</button>
+                        <button
+                            class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap">Customize
+                            Now</button>
                     </div>
                 </div>
 
                 <!-- Template 8 -->
                 <div class="bg-white rounded-lg shadow-sm overflow-hidden group hover:shadow-md transition-shadow">
                     <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=A%20modern%2C%20elegant%20get%20well%20soon%20greeting%20card%20design%20with%20soft%20colors.%20The%20card%20features%20minimalist%20floral%20elements%20and%20healing%20symbols%20on%20a%20gentle%20background.%20Professional%20digital%20design%20with%20subtle%20textures%20and%20elegant%20typography%20saying%20Get%20Well%20Soon.%20The%20style%20is%20contemporary%20and%20comforting%20with%20a%20clean%20layout.&width=600&height=450&seq=9&orientation=landscape" alt="Get Well Card Template" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute top-2 right-2 bg-white/90 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <img src="https://readdy.ai/api/search-image?query=A%20modern%2C%20elegant%20get%20well%20soon%20greeting%20card%20design%20with%20soft%20colors.%20The%20card%20features%20minimalist%20floral%20elements%20and%20healing%20symbols%20on%20a%20gentle%20background.%20Professional%20digital%20design%20with%20subtle%20textures%20and%20elegant%20typography%20saying%20Get%20Well%20Soon.%20The%20style%20is%20contemporary%20and%20comforting%20with%20a%20clean%20layout.&width=600&height=450&seq=9&orientation=landscape"
+                            alt="Get Well Card Template"
+                            class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+                        <div
+                            class="absolute top-2 right-2 bg-white/90 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                             <div class="w-5 h-5 flex items-center justify-center text-gray-700 hover:text-primary">
                                 <i class="ri-heart-line"></i>
                             </div>
@@ -470,14 +548,17 @@
                             <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">Get Well</span>
                             <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full">Caring</span>
                         </div>
-                        <button class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap">Customize Now</button>
+                        <button
+                            class="w-full !rounded-button bg-primary/10 text-primary px-4 py-2 text-sm font-medium hover:bg-primary/20 transition-colors whitespace-nowrap">Customize
+                            Now</button>
                     </div>
                 </div>
             </div>
 
             <!-- Load More Button -->
             <div class="flex justify-center mt-12">
-                <button class="!rounded-button bg-white border border-gray-300 text-gray-700 px-6 py-3 font-medium hover:bg-gray-50 transition-colors whitespace-nowrap flex items-center">
+                <button
+                    class="!rounded-button bg-white border border-gray-300 text-gray-700 px-6 py-3 font-medium hover:bg-gray-50 transition-colors whitespace-nowrap flex items-center">
                     <span>Load More Templates</span>
                     <div class="w-5 h-5 ml-2 flex items-center justify-center">
                         <i class="ri-arrow-down-line"></i>
@@ -492,9 +573,10 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col items-center mb-12">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">How It Works</h2>
-                <p class="text-lg text-gray-600 max-w-2xl text-center">Create and send beautiful e-cards in just three simple steps</p>
+                <p class="text-lg text-gray-600 max-w-2xl text-center">Create and send beautiful e-cards in just three
+                    simple steps</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Step 1 -->
                 <div class="flex flex-col items-center text-center">
@@ -504,9 +586,10 @@
                         </div>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Choose a Template</h3>
-                    <p class="text-gray-600">Browse our extensive collection of professionally designed templates for any occasion or event.</p>
+                    <p class="text-gray-600">Browse our extensive collection of professionally designed templates for
+                        any occasion or event.</p>
                 </div>
-                
+
                 <!-- Step 2 -->
                 <div class="flex flex-col items-center text-center">
                     <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
@@ -515,9 +598,10 @@
                         </div>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Personalize Your Card</h3>
-                    <p class="text-gray-600">Add your own message, photos, and customize colors to make your e-card unique and personal.</p>
+                    <p class="text-gray-600">Add your own message, photos, and customize colors to make your e-card
+                        unique and personal.</p>
                 </div>
-                
+
                 <!-- Step 3 -->
                 <div class="flex flex-col items-center text-center">
                     <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
@@ -526,7 +610,8 @@
                         </div>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Send Instantly</h3>
-                    <p class="text-gray-600">Deliver your e-card immediately or schedule it for the perfect moment. Track when it's opened.</p>
+                    <p class="text-gray-600">Deliver your e-card immediately or schedule it for the perfect moment.
+                        Track when it's opened.</p>
                 </div>
             </div>
         </div>
@@ -537,9 +622,10 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col items-center mb-12">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose Our Platform</h2>
-                <p class="text-lg text-gray-600 max-w-2xl text-center">Discover the benefits that make our e-greeting service stand out from the rest</p>
+                <p class="text-lg text-gray-600 max-w-2xl text-center">Discover the benefits that make our e-greeting
+                    service stand out from the rest</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Feature 1 -->
                 <div class="bg-white p-6 rounded-lg shadow-sm">
@@ -549,9 +635,10 @@
                         </div>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Professional Designs</h3>
-                    <p class="text-gray-600">Access hundreds of professionally designed templates created by talented artists and designers.</p>
+                    <p class="text-gray-600">Access hundreds of professionally designed templates created by talented
+                        artists and designers.</p>
                 </div>
-                
+
                 <!-- Feature 2 -->
                 <div class="bg-white p-6 rounded-lg shadow-sm">
                     <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
@@ -560,9 +647,10 @@
                         </div>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Easy Customization</h3>
-                    <p class="text-gray-600">Our intuitive editor makes it simple to personalize your cards with text, photos, and colors.</p>
+                    <p class="text-gray-600">Our intuitive editor makes it simple to personalize your cards with text,
+                        photos, and colors.</p>
                 </div>
-                
+
                 <!-- Feature 3 -->
                 <div class="bg-white p-6 rounded-lg shadow-sm">
                     <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
@@ -571,9 +659,10 @@
                         </div>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Scheduled Delivery</h3>
-                    <p class="text-gray-600">Plan ahead by scheduling your e-cards for future delivery on the perfect date and time.</p>
+                    <p class="text-gray-600">Plan ahead by scheduling your e-cards for future delivery on the perfect
+                        date and time.</p>
                 </div>
-                
+
                 <!-- Feature 4 -->
                 <div class="bg-white p-6 rounded-lg shadow-sm">
                     <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
@@ -582,9 +671,10 @@
                         </div>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Recurring Reminders</h3>
-                    <p class="text-gray-600">Never forget important dates with automated recurring cards for birthdays and anniversaries.</p>
+                    <p class="text-gray-600">Never forget important dates with automated recurring cards for birthdays
+                        and anniversaries.</p>
                 </div>
-                
+
                 <!-- Feature 5 -->
                 <div class="bg-white p-6 rounded-lg shadow-sm">
                     <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
@@ -593,9 +683,10 @@
                         </div>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Address Book</h3>
-                    <p class="text-gray-600">Organize your contacts and groups to easily send cards to multiple recipients at once.</p>
+                    <p class="text-gray-600">Organize your contacts and groups to easily send cards to multiple
+                        recipients at once.</p>
                 </div>
-                
+
                 <!-- Feature 6 -->
                 <div class="bg-white p-6 rounded-lg shadow-sm">
                     <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
@@ -604,7 +695,8 @@
                         </div>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 mb-3">Delivery Tracking</h3>
-                    <p class="text-gray-600">See when your e-cards are opened and how recipients interact with your greetings.</p>
+                    <p class="text-gray-600">See when your e-cards are opened and how recipients interact with your
+                        greetings.</p>
                 </div>
             </div>
         </div>
@@ -615,9 +707,10 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col items-center mb-12">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">Simple, Transparent Pricing</h2>
-                <p class="text-lg text-gray-600 max-w-2xl text-center">Choose the plan that works best for your greeting needs</p>
+                <p class="text-lg text-gray-600 max-w-2xl text-center">Choose the plan that works best for your greeting
+                    needs</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 <!-- Basic Plan -->
                 <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
@@ -656,13 +749,15 @@
                                 <span class="ml-3 text-gray-600">Email delivery</span>
                             </li>
                             <li class="flex items-start">
-                                <div class="w-5 h-5 flex-shrink-0 flex items-center justify-center text-gray-400 mt-0.5">
+                                <div
+                                    class="w-5 h-5 flex-shrink-0 flex items-center justify-center text-gray-400 mt-0.5">
                                     <i class="ri-close-line"></i>
                                 </div>
                                 <span class="ml-3 text-gray-400">No scheduled delivery</span>
                             </li>
                             <li class="flex items-start">
-                                <div class="w-5 h-5 flex-shrink-0 flex items-center justify-center text-gray-400 mt-0.5">
+                                <div
+                                    class="w-5 h-5 flex-shrink-0 flex items-center justify-center text-gray-400 mt-0.5">
                                     <i class="ri-close-line"></i>
                                 </div>
                                 <span class="ml-3 text-gray-400">No delivery tracking</span>
@@ -670,13 +765,16 @@
                         </ul>
                     </div>
                     <div class="p-6 pt-0">
-                        <button class="w-full !rounded-button bg-white border border-primary text-primary px-4 py-3 font-medium hover:bg-primary/5 transition-colors whitespace-nowrap">Get Started</button>
+                        <button
+                            class="w-full !rounded-button bg-white border border-primary text-primary px-4 py-3 font-medium hover:bg-primary/5 transition-colors whitespace-nowrap">Get
+                            Started</button>
                     </div>
                 </div>
-                
+
                 <!-- Premium Plan -->
                 <div class="bg-white border-2 border-primary rounded-lg shadow-sm overflow-hidden relative">
-                    <div class="absolute top-0 right-0 bg-primary text-white text-xs font-medium px-3 py-1">POPULAR</div>
+                    <div class="absolute top-0 right-0 bg-primary text-white text-xs font-medium px-3 py-1">POPULAR
+                    </div>
                     <div class="p-6 border-b border-gray-200">
                         <h3 class="text-xl font-semibold text-gray-900 mb-2">Premium</h3>
                         <div class="flex items-baseline mb-4">
@@ -726,10 +824,12 @@
                         </ul>
                     </div>
                     <div class="p-6 pt-0">
-                        <button class="w-full !rounded-button bg-primary text-white px-4 py-3 font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Get Started</button>
+                        <button
+                            class="w-full !rounded-button bg-primary text-white px-4 py-3 font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Get
+                            Started</button>
                     </div>
                 </div>
-                
+
                 <!-- Business Plan -->
                 <div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
                     <div class="p-6 border-b border-gray-200">
@@ -781,7 +881,9 @@
                         </ul>
                     </div>
                     <div class="p-6 pt-0">
-                        <button class="w-full !rounded-button bg-white border border-primary text-primary px-4 py-3 font-medium hover:bg-primary/5 transition-colors whitespace-nowrap">Get Started</button>
+                        <button
+                            class="w-full !rounded-button bg-white border border-primary text-primary px-4 py-3 font-medium hover:bg-primary/5 transition-colors whitespace-nowrap">Get
+                            Started</button>
                     </div>
                 </div>
             </div>
@@ -793,9 +895,10 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col items-center mb-12">
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
-                <p class="text-lg text-gray-600 max-w-2xl text-center">Hear from people who have used our platform to send memorable greetings</p>
+                <p class="text-lg text-gray-600 max-w-2xl text-center">Hear from people who have used our platform to
+                    send memorable greetings</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 <!-- Testimonial 1 -->
                 <div class="bg-white p-6 rounded-lg shadow-sm">
@@ -806,9 +909,11 @@
                         <i class="ri-star-fill"></i>
                         <i class="ri-star-fill"></i>
                     </div>
-                    <p class="text-gray-600 mb-6">"I love how easy it is to create beautiful cards. The scheduled delivery feature has saved me from forgetting important birthdays multiple times!"</p>
+                    <p class="text-gray-600 mb-6">"I love how easy it is to create beautiful cards. The scheduled
+                        delivery feature has saved me from forgetting important birthdays multiple times!"</p>
                     <div class="flex items-center">
-                        <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 mr-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 mr-3">
                             <i class="ri-user-3-line"></i>
                         </div>
                         <div>
@@ -817,7 +922,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Testimonial 2 -->
                 <div class="bg-white p-6 rounded-lg shadow-sm">
                     <div class="flex items-center mb-4 text-yellow-400">
@@ -827,9 +932,11 @@
                         <i class="ri-star-fill"></i>
                         <i class="ri-star-fill"></i>
                     </div>
-                    <p class="text-gray-600 mb-6">"As a business owner, I use this platform to send holiday greetings to all my clients. The professional templates and tracking features are invaluable."</p>
+                    <p class="text-gray-600 mb-6">"As a business owner, I use this platform to send holiday greetings to
+                        all my clients. The professional templates and tracking features are invaluable."</p>
                     <div class="flex items-center">
-                        <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 mr-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 mr-3">
                             <i class="ri-user-3-line"></i>
                         </div>
                         <div>
@@ -838,7 +945,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Testimonial 3 -->
                 <div class="bg-white p-6 rounded-lg shadow-sm">
                     <div class="flex items-center mb-4 text-yellow-400">
@@ -848,9 +955,11 @@
                         <i class="ri-star-fill"></i>
                         <i class="ri-star-half-fill"></i>
                     </div>
-                    <p class="text-gray-600 mb-6">"I live abroad and this platform helps me stay connected with family back home. The ability to add personal photos makes the cards feel so much more special."</p>
+                    <p class="text-gray-600 mb-6">"I live abroad and this platform helps me stay connected with family
+                        back home. The ability to add personal photos makes the cards feel so much more special."</p>
                     <div class="flex items-center">
-                        <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 mr-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 mr-3">
                             <i class="ri-user-3-line"></i>
                         </div>
                         <div>
@@ -870,20 +979,24 @@
                 <div class="flex flex-col md:flex-row">
                     <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
                         <h2 class="text-3xl font-bold text-gray-900 mb-4">Ready to Get Started?</h2>
-                        <p class="text-lg text-gray-600 mb-6">Join thousands of users who are already sending beautiful, personalized e-greetings. Try it free for 7 days.</p>
+                        <p class="text-lg text-gray-600 mb-6">Join thousands of users who are already sending beautiful,
+                            personalized e-greetings. Try it free for 7 days.</p>
                         <div class="flex flex-col sm:flex-row gap-4">
-                            <a href="#" class="!rounded-button bg-primary text-white px-6 py-3 text-base font-medium hover:bg-primary/90 transition-colors whitespace-nowrap flex items-center justify-center">
+                            <a href="#"
+                                class="!rounded-button bg-primary text-white px-6 py-3 text-base font-medium hover:bg-primary/90 transition-colors whitespace-nowrap flex items-center justify-center">
                                 <span>Start Free Trial</span>
                                 <div class="w-5 h-5 ml-2 flex items-center justify-center">
                                     <i class="ri-arrow-right-line"></i>
                                 </div>
                             </a>
-                            <a href="#" class="!rounded-button bg-white text-gray-700 border border-gray-300 px-6 py-3 text-base font-medium hover:bg-gray-50 transition-colors whitespace-nowrap flex items-center justify-center">
+                            <a href="#"
+                                class="!rounded-button bg-white text-gray-700 border border-gray-300 px-6 py-3 text-base font-medium hover:bg-gray-50 transition-colors whitespace-nowrap flex items-center justify-center">
                                 <span>View Plans</span>
                             </a>
                         </div>
                     </div>
-                    <div class="md:w-1/2 bg-cover bg-center" style="background-image: url('https://readdy.ai/api/search-image?query=A%20modern%2C%20elegant%20workspace%20with%20a%20person%20designing%20digital%20greeting%20cards%20on%20a%20computer.%20The%20scene%20shows%20a%20creative%20professional%20environment%20with%20soft%20lighting.%20The%20computer%20screen%20displays%20a%20beautiful%20digital%20greeting%20card%20being%20designed.%20Professional%2C%20high-quality%20digital%20illustration%20with%20a%20clean%2C%20minimalist%20aesthetic.&width=600&height=500&seq=10&orientation=portrait');">
+                    <div class="md:w-1/2 bg-cover bg-center"
+                        style="background-image: url('https://readdy.ai/api/search-image?query=A%20modern%2C%20elegant%20workspace%20with%20a%20person%20designing%20digital%20greeting%20cards%20on%20a%20computer.%20The%20scene%20shows%20a%20creative%20professional%20environment%20with%20soft%20lighting.%20The%20computer%20screen%20displays%20a%20beautiful%20digital%20greeting%20card%20being%20designed.%20Professional%2C%20high-quality%20digital%20illustration%20with%20a%20clean%2C%20minimalist%20aesthetic.&width=600&height=500&seq=10&orientation=portrait');">
                     </div>
                 </div>
             </div>
@@ -895,10 +1008,13 @@
         <div class="container mx-auto px-4">
             <div class="max-w-2xl mx-auto text-center">
                 <h2 class="text-2xl font-bold text-gray-900 mb-4">Stay Updated</h2>
-                <p class="text-gray-600 mb-6">Subscribe to our newsletter for new template alerts, special offers, and greeting inspiration</p>
+                <p class="text-gray-600 mb-6">Subscribe to our newsletter for new template alerts, special offers, and
+                    greeting inspiration</p>
                 <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                    <input type="email" placeholder="Enter your email" class="flex-grow px-4 py-3 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
-                    <button type="submit" class="!rounded-button bg-primary text-white px-6 py-3 font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Subscribe</button>
+                    <input type="email" placeholder="Enter your email"
+                        class="flex-grow px-4 py-3 rounded-button border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                    <button type="submit"
+                        class="!rounded-button bg-primary text-white px-6 py-3 font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Subscribe</button>
                 </form>
                 <p class="text-sm text-gray-500 mt-4">We respect your privacy. Unsubscribe at any time.</p>
             </div>
@@ -913,21 +1029,25 @@
                     <a href="#" class="text-3xl font-['Pacifico'] text-white mb-4 inline-block">logo</a>
                     <p class="text-gray-400 mb-6">Making digital greetings personal and meaningful since 2020.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
                             <i class="ri-facebook-fill"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
                             <i class="ri-twitter-x-fill"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
                             <i class="ri-instagram-fill"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
                             <i class="ri-pinterest-fill"></i>
                         </a>
                     </div>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-3">
@@ -938,7 +1058,7 @@
                         <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Gift Cards</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Company</h3>
                     <ul class="space-y-3">
@@ -949,19 +1069,20 @@
                         <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Support</h3>
                     <ul class="space-y-3">
                         <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+                        </li>
                         <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Accessibility</a></li>
                     </ul>
                 </div>
             </div>
-            
+
             <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-gray-400 mb-4 md:mb-0">&copy; 2025 E-Greeting Platform. All rights reserved.</p>
                 <div class="flex items-center space-x-4">
@@ -983,9 +1104,10 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Mobile menu toggle functionality would go here
         });
     </script>
 </body>
+
 </html>

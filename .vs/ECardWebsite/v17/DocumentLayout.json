@@ -3,28 +3,80 @@
   "WorkspaceRootPath": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\models\\subscription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\models\\subscription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\ecardwebsite.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\ecardwebsite.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\views\\transaction\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\views\\transaction\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\views\\transaction\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\views\\transaction\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\views\\transaction\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\views\\transaction\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\views\\transaction\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\views\\transaction\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\controllers\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\controllers\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\views\\offer\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\views\\offer\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\views\\offer\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\views\\offer\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\views\\subscription\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\views\\subscription\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\views\\offer\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\views\\offer\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\views\\subscription\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\views\\subscription\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\views\\subscription\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\views\\subscription\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\views\\subscription\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\views\\subscription\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\controllers\\subscriptioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\controllers\\subscriptioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\controllers\\offercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\controllers\\offercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\models\\subscription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\models\\subscription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\views\\offer\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\views\\offer\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\controllers\\offercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\controllers\\offercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\views\\user\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\views\\user\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\views\\offer\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\views\\offer\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\views\\offer\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\views\\offer\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\models\\offer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -123,10 +175,6 @@
       "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\models\\applicationdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\views\\user\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\views\\user\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\views\\user\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\views\\user\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -135,24 +183,8 @@
       "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\views\\user\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\controllers\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\controllers\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\controllers\\subscriptioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\controllers\\subscriptioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|c:\\users\\m mudasir\\pictures\\ecardwebsite\\ecardwebsite\\ecardwebsite.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{9EEDEDDD-4F14-4B18-AFCD-976F2BEFEBF5}|ECardWebsite\\ECardWebsite.csproj|solutionrelative:ecardwebsite\\ecardwebsite.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -168,70 +200,174 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Offer\\Delete.cshtml",
-              "RelativeDocumentMoniker": "ECardWebsite\\Views\\Offer\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Offer\\Delete.cshtml",
-              "RelativeToolTip": "ECardWebsite\\Views\\Offer\\Delete.cshtml",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAAB8AAAAdAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Transaction\\Delete.cshtml",
+              "RelativeDocumentMoniker": "ECardWebsite\\Views\\Transaction\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Transaction\\Delete.cshtml",
+              "RelativeToolTip": "ECardWebsite\\Views\\Transaction\\Delete.cshtml",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAABMAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-28T05:47:10.278Z",
+              "WhenOpened": "2025-04-29T14:57:17.062Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Offer\\Edit.cshtml",
-              "RelativeDocumentMoniker": "ECardWebsite\\Views\\Offer\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Offer\\Edit.cshtml",
-              "RelativeToolTip": "ECardWebsite\\Views\\Offer\\Edit.cshtml",
-              "ViewState": "AgIAADMAAAAAAAAAAAAgwDUAAAABAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Transaction\\Edit.cshtml",
+              "RelativeDocumentMoniker": "ECardWebsite\\Views\\Transaction\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Transaction\\Edit.cshtml",
+              "RelativeToolTip": "ECardWebsite\\Views\\Transaction\\Edit.cshtml",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAAAEkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-28T05:46:40.942Z",
+              "WhenOpened": "2025-04-29T14:57:03.184Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Offer\\Create.cshtml",
-              "RelativeDocumentMoniker": "ECardWebsite\\Views\\Offer\\Create.cshtml",
-              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Offer\\Create.cshtml",
-              "RelativeToolTip": "ECardWebsite\\Views\\Offer\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Transaction\\Create.cshtml",
+              "RelativeDocumentMoniker": "ECardWebsite\\Views\\Transaction\\Create.cshtml",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Transaction\\Create.cshtml",
+              "RelativeToolTip": "ECardWebsite\\Views\\Transaction\\Create.cshtml",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAAAEMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-28T05:45:34.19Z",
+              "WhenOpened": "2025-04-29T14:56:02.701Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Offer\\Index.cshtml",
-              "RelativeDocumentMoniker": "ECardWebsite\\Views\\Offer\\Index.cshtml",
-              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Offer\\Index.cshtml",
-              "RelativeToolTip": "ECardWebsite\\Views\\Offer\\Index.cshtml",
-              "ViewState": "AgIAACYAAAAAAAAAAAAgwC4AAAAIAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Transaction\\Index.cshtml",
+              "RelativeDocumentMoniker": "ECardWebsite\\Views\\Transaction\\Index.cshtml",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Transaction\\Index.cshtml",
+              "RelativeToolTip": "ECardWebsite\\Views\\Transaction\\Index.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAuwCMAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-28T05:45:17.504Z",
+              "WhenOpened": "2025-04-29T14:55:07.631Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Subscription\\Delete.cshtml",
+              "RelativeDocumentMoniker": "ECardWebsite\\Views\\Subscription\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Subscription\\Delete.cshtml",
+              "RelativeToolTip": "ECardWebsite\\Views\\Subscription\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-29T14:53:25.014Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Subscription\\Edit.cshtml",
+              "RelativeDocumentMoniker": "ECardWebsite\\Views\\Subscription\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Subscription\\Edit.cshtml",
+              "RelativeToolTip": "ECardWebsite\\Views\\Subscription\\Edit.cshtml",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAAAEcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-29T14:52:53.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ECardWebsite.csproj",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\ECardWebsite.csproj",
+              "RelativeDocumentMoniker": "ECardWebsite\\ECardWebsite.csproj",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\ECardWebsite.csproj",
+              "RelativeToolTip": "ECardWebsite\\ECardWebsite.csproj",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAABIAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-23T05:09:29.364Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Subscription\\Create.cshtml",
+              "RelativeDocumentMoniker": "ECardWebsite\\Views\\Subscription\\Create.cshtml",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Subscription\\Create.cshtml",
+              "RelativeToolTip": "ECardWebsite\\Views\\Subscription\\Create.cshtml",
+              "ViewState": "AgIAADkAAAAAAAAAAAAuwEYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-29T14:51:54.253Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\FeedBack\\Delete.cshtml",
-              "RelativeDocumentMoniker": "ECardWebsite\\Views\\FeedBack\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\FeedBack\\Delete.cshtml",
-              "RelativeToolTip": "ECardWebsite\\Views\\FeedBack\\Delete.cshtml",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAB4AAAAGAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Offer\\Delete.cshtml",
+              "RelativeDocumentMoniker": "ECardWebsite\\Views\\Offer\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Offer\\Delete.cshtml",
+              "RelativeToolTip": "ECardWebsite\\Views\\Offer\\Delete.cshtml",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAACQAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-28T05:21:04.318Z",
+              "WhenOpened": "2025-04-28T05:47:10.278Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 6,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Models\\Transaction.cs",
+              "RelativeDocumentMoniker": "ECardWebsite\\Models\\Transaction.cs",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Models\\Transaction.cs",
+              "RelativeToolTip": "ECardWebsite\\Models\\Transaction.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA4wBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T04:49:25.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TransactionController.cs",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Controllers\\TransactionController.cs",
+              "RelativeDocumentMoniker": "ECardWebsite\\Controllers\\TransactionController.cs",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Controllers\\TransactionController.cs",
+              "RelativeToolTip": "ECardWebsite\\Controllers\\TransactionController.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAqwF4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T05:06:38.41Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Subscription\\Index.cshtml",
+              "RelativeDocumentMoniker": "ECardWebsite\\Views\\Subscription\\Index.cshtml",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Subscription\\Index.cshtml",
+              "RelativeToolTip": "ECardWebsite\\Views\\Subscription\\Index.cshtml",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAC8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-29T14:51:02.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Subscription.cs",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Models\\Subscription.cs",
+              "RelativeDocumentMoniker": "ECardWebsite\\Models\\Subscription.cs",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Models\\Subscription.cs",
+              "RelativeToolTip": "ECardWebsite\\Models\\Subscription.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAA4wB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T04:50:07.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\FeedBack\\Edit.cshtml",
               "RelativeDocumentMoniker": "ECardWebsite\\Views\\FeedBack\\Edit.cshtml",
@@ -239,77 +375,36 @@
               "RelativeToolTip": "ECardWebsite\\Views\\FeedBack\\Edit.cshtml",
               "ViewState": "AgIAABgAAAAAAAAAAAAgwCwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-28T05:20:21.339Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-28T05:20:21.339Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Subscription.cs",
-              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Models\\Subscription.cs",
-              "RelativeDocumentMoniker": "ECardWebsite\\Models\\Subscription.cs",
-              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Models\\Subscription.cs",
-              "RelativeToolTip": "ECardWebsite\\Models\\Subscription.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAswAEAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T04:50:07.73Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\FeedBack\\Create.cshtml",
-              "RelativeDocumentMoniker": "ECardWebsite\\Views\\FeedBack\\Create.cshtml",
-              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\FeedBack\\Create.cshtml",
-              "RelativeToolTip": "ECardWebsite\\Views\\FeedBack\\Create.cshtml",
-              "ViewState": "AgIAABcAAAAAAAAAAAAgwCsAAAABAAAAAAAAAA==",
+              "DocumentIndex": 20,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\FeedBack\\Delete.cshtml",
+              "RelativeDocumentMoniker": "ECardWebsite\\Views\\FeedBack\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\FeedBack\\Delete.cshtml",
+              "RelativeToolTip": "ECardWebsite\\Views\\FeedBack\\Delete.cshtml",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAB4AAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-28T05:15:05.074Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-28T05:21:04.318Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 16,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\FeedBack\\Index.cshtml",
-              "RelativeDocumentMoniker": "ECardWebsite\\Views\\FeedBack\\Index.cshtml",
-              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\FeedBack\\Index.cshtml",
-              "RelativeToolTip": "ECardWebsite\\Views\\FeedBack\\Index.cshtml",
-              "ViewState": "AgIAACAAAAAAAAAAAAAgwCgAAAAIAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\User\\Index.cshtml",
+              "RelativeDocumentMoniker": "ECardWebsite\\Views\\User\\Index.cshtml",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\User\\Index.cshtml",
+              "RelativeToolTip": "ECardWebsite\\Views\\User\\Index.cshtml",
+              "ViewState": "AgIAACgAAAAAAAAAAAAAACUAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-28T05:14:25.404Z",
+              "WhenOpened": "2025-04-25T05:34:50.448Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Category.cs",
-              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Models\\Category.cs",
-              "RelativeDocumentMoniker": "ECardWebsite\\Models\\Category.cs",
-              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Models\\Category.cs",
-              "RelativeToolTip": "ECardWebsite\\Models\\Category.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAiwAkAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T04:48:18.657Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Offer.cs",
-              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Models\\Offer.cs",
-              "RelativeDocumentMoniker": "ECardWebsite\\Models\\Offer.cs",
-              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Models\\Offer.cs",
-              "RelativeToolTip": "ECardWebsite\\Models\\Offer.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAqwBoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T04:55:07.182Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 13,
               "Title": "OfferController.cs",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Controllers\\OfferController.cs",
               "RelativeDocumentMoniker": "ECardWebsite\\Controllers\\OfferController.cs",
@@ -322,7 +417,107 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 12,
+              "Title": "SubscriptionController.cs",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Controllers\\SubscriptionController.cs",
+              "RelativeDocumentMoniker": "ECardWebsite\\Controllers\\SubscriptionController.cs",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Controllers\\SubscriptionController.cs",
+              "RelativeToolTip": "ECardWebsite\\Controllers\\SubscriptionController.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAqwF4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T05:05:37.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Offer\\Index.cshtml",
+              "RelativeDocumentMoniker": "ECardWebsite\\Views\\Offer\\Index.cshtml",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Offer\\Index.cshtml",
+              "RelativeToolTip": "ECardWebsite\\Views\\Offer\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-28T05:45:17.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Offer\\Create.cshtml",
+              "RelativeDocumentMoniker": "ECardWebsite\\Views\\Offer\\Create.cshtml",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Offer\\Create.cshtml",
+              "RelativeToolTip": "ECardWebsite\\Views\\Offer\\Create.cshtml",
+              "ViewState": "AgIAADUAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-28T05:45:34.19Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Offer\\Edit.cshtml",
+              "RelativeDocumentMoniker": "ECardWebsite\\Views\\Offer\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Offer\\Edit.cshtml",
+              "RelativeToolTip": "ECardWebsite\\Views\\Offer\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-28T05:46:40.942Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\FeedBack\\Create.cshtml",
+              "RelativeDocumentMoniker": "ECardWebsite\\Views\\FeedBack\\Create.cshtml",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\FeedBack\\Create.cshtml",
+              "RelativeToolTip": "ECardWebsite\\Views\\FeedBack\\Create.cshtml",
+              "ViewState": "AgIAABcAAAAAAAAAAAAgwCsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-28T05:15:05.074Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\FeedBack\\Index.cshtml",
+              "RelativeDocumentMoniker": "ECardWebsite\\Views\\FeedBack\\Index.cshtml",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\FeedBack\\Index.cshtml",
+              "RelativeToolTip": "ECardWebsite\\Views\\FeedBack\\Index.cshtml",
+              "ViewState": "AgIAACAAAAAAAAAAAAAgwCgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-28T05:14:25.404Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "ECardWebsite\\Models\\Category.cs",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Models\\Category.cs",
+              "RelativeToolTip": "ECardWebsite\\Models\\Category.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAiwAkAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T04:48:18.657Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Offer.cs",
+              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Models\\Offer.cs",
+              "RelativeDocumentMoniker": "ECardWebsite\\Models\\Offer.cs",
+              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Models\\Offer.cs",
+              "RelativeToolTip": "ECardWebsite\\Models\\Offer.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAqwBoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T04:55:07.182Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
               "Title": "ECardTemplateController.cs",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Controllers\\ECardTemplateController.cs",
               "RelativeDocumentMoniker": "ECardWebsite\\Controllers\\ECardTemplateController.cs",
@@ -330,12 +525,11 @@
               "RelativeToolTip": "ECardWebsite\\Controllers\\ECardTemplateController.cs",
               "ViewState": "AgIAAKcAAAAAAAAAAAAQwKwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T05:03:24.344Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-25T05:03:24.344Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 30,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\ECardTemplate\\Edit.cshtml",
               "RelativeDocumentMoniker": "ECardWebsite\\Views\\ECardTemplate\\Edit.cshtml",
@@ -347,7 +541,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 29,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\ECardTemplate\\Delete.cshtml",
               "RelativeDocumentMoniker": "ECardWebsite\\Views\\ECardTemplate\\Delete.cshtml",
@@ -359,7 +553,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 26,
               "Title": "FeedbackController.cs",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Controllers\\FeedbackController.cs",
               "RelativeDocumentMoniker": "ECardWebsite\\Controllers\\FeedbackController.cs",
@@ -367,12 +561,11 @@
               "RelativeToolTip": "ECardWebsite\\Controllers\\FeedbackController.cs",
               "ViewState": "AgIAAEcAAAAAAAAAAAAYwFoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T05:05:11.466Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-25T05:05:11.466Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 24,
               "Title": "Feedback.cs",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Models\\Feedback.cs",
               "RelativeDocumentMoniker": "ECardWebsite\\Models\\Feedback.cs",
@@ -380,12 +573,11 @@
               "RelativeToolTip": "ECardWebsite\\Models\\Feedback.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAqwAsAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T04:49:47.068Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-25T04:49:47.068Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 33,
               "Title": "ECardTemplate.cs",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Models\\ECardTemplate.cs",
               "RelativeDocumentMoniker": "ECardWebsite\\Models\\ECardTemplate.cs",
@@ -397,7 +589,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 28,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\ECardTemplate\\Create.cshtml",
               "RelativeDocumentMoniker": "ECardWebsite\\Views\\ECardTemplate\\Create.cshtml",
@@ -409,7 +601,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 32,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "ECardWebsite\\Controllers\\UserController.cs",
@@ -421,7 +613,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 31,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Category\\Create.cshtml",
               "RelativeDocumentMoniker": "ECardWebsite\\Views\\Category\\Create.cshtml",
@@ -433,7 +625,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 36,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Category\\Index.cshtml",
               "RelativeDocumentMoniker": "ECardWebsite\\Views\\Category\\Index.cshtml",
@@ -445,7 +637,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 37,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Category\\Edit.cshtml",
               "RelativeDocumentMoniker": "ECardWebsite\\Views\\Category\\Edit.cshtml",
@@ -457,7 +649,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 35,
               "Title": "ApplicationDbContextModelSnapshot.cs",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Migrations\\ApplicationDbContextModelSnapshot.cs",
               "RelativeDocumentMoniker": "ECardWebsite\\Migrations\\ApplicationDbContextModelSnapshot.cs",
@@ -469,7 +661,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 34,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\ECardTemplate\\Index.cshtml",
               "RelativeDocumentMoniker": "ECardWebsite\\Views\\ECardTemplate\\Index.cshtml",
@@ -481,7 +673,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 38,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\Category\\Delete.cshtml",
               "RelativeDocumentMoniker": "ECardWebsite\\Views\\Category\\Delete.cshtml",
@@ -493,19 +685,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "TransactionController.cs",
-              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Controllers\\TransactionController.cs",
-              "RelativeDocumentMoniker": "ECardWebsite\\Controllers\\TransactionController.cs",
-              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Controllers\\TransactionController.cs",
-              "RelativeToolTip": "ECardWebsite\\Controllers\\TransactionController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T05:06:38.41Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 42,
               "Title": "ApplicationDbContextFactory.cs",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Models\\ApplicationDbContextFactory.cs",
               "RelativeDocumentMoniker": "ECardWebsite\\Models\\ApplicationDbContextFactory.cs",
@@ -517,7 +697,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 39,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Program.cs",
               "RelativeDocumentMoniker": "ECardWebsite\\Program.cs",
@@ -529,7 +709,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 41,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Models\\User.cs",
               "RelativeDocumentMoniker": "ECardWebsite\\Models\\User.cs",
@@ -541,19 +721,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\User\\Index.cshtml",
-              "RelativeDocumentMoniker": "ECardWebsite\\Views\\User\\Index.cshtml",
-              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\User\\Index.cshtml",
-              "RelativeToolTip": "ECardWebsite\\Views\\User\\Index.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACgAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-25T05:34:50.448Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 40,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\User\\Create.cshtml",
               "RelativeDocumentMoniker": "ECardWebsite\\Views\\User\\Create.cshtml",
@@ -565,7 +733,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 43,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\User\\Edit.cshtml",
               "RelativeDocumentMoniker": "ECardWebsite\\Views\\User\\Edit.cshtml",
@@ -577,7 +745,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 44,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Views\\User\\Delete.cshtml",
               "RelativeDocumentMoniker": "ECardWebsite\\Views\\User\\Delete.cshtml",
@@ -589,19 +757,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "Transaction.cs",
-              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Models\\Transaction.cs",
-              "RelativeDocumentMoniker": "ECardWebsite\\Models\\Transaction.cs",
-              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Models\\Transaction.cs",
-              "RelativeToolTip": "ECardWebsite\\Models\\Transaction.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAA3wBcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T04:49:25.426Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 45,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\appsettings.json",
               "RelativeDocumentMoniker": "ECardWebsite\\appsettings.json",
@@ -610,30 +766,6 @@
               "ViewState": "AgIAAAcAAAAAAAAAAADwvwwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-04-23T05:05:14.319Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "SubscriptionController.cs",
-              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Controllers\\SubscriptionController.cs",
-              "RelativeDocumentMoniker": "ECardWebsite\\Controllers\\SubscriptionController.cs",
-              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\Controllers\\SubscriptionController.cs",
-              "RelativeToolTip": "ECardWebsite\\Controllers\\SubscriptionController.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAgwF4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T05:05:37.553Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "ECardWebsite.csproj",
-              "DocumentMoniker": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\ECardWebsite.csproj",
-              "RelativeDocumentMoniker": "ECardWebsite\\ECardWebsite.csproj",
-              "ToolTip": "C:\\Users\\M Mudasir\\Pictures\\ECardWebsite\\ECardWebsite\\ECardWebsite.csproj",
-              "RelativeToolTip": "ECardWebsite\\ECardWebsite.csproj",
-              "ViewState": "AgIAAAQAAAAAAAAAAABBwBIAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-04-23T05:09:29.364Z"
             }
           ]
         }

@@ -1,0 +1,72 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model ECardWebsite.Models.Subscription
+
+@{
+    ViewData["Title"] = "Edit Subscription";
+}
+
+<h1>Edit Subscription</h1>
+
+@if (ViewBag.Users == null || !ViewBag.Users.Any())
+{
+    <div class="alert alert-warning">
+        No users available. Please <a asp-controller="User" asp-action="Create">create a user</a> first.
+    </div>
+}
+else
+{
+    <form asp-action="Edit">
+        <input type="hidden" asp-for="SubscriptionId" />
+        <div class="form-group" style="--i: 1">
+            <label asp-for="UserId" class="control-label">User</label>
+            <select asp-for="UserId" class="form-control" asp-items="@(new SelectList(ViewBag.Users, "UserId", "Username"))">
+                <option value="">Select a user</option>
+            </select>
+            <span asp-validation-for="UserId" class="text-danger"></span>
+        </div>
+        <div class="form-group" style="--i: 2">
+            <label asp-for="EmailList" class="control-label"></label>
+            <input asp-for="EmailList" class="form-control" />
+            <span asp-validation-for="EmailList" class="text-danger"></span>
+        </div>
+        <div class="form-group" style="--i: 3">
+            <label asp-for="OfferId" class="control-label">Offer (Optional)</label>
+            <select asp-for="OfferId" class="form-control" asp-items="@(new SelectList(ViewBag.Offers, "OfferId", "Title"))">
+                <option value="">No Offer</option>
+            </select>
+            <span asp-validation-for="OfferId" class="text-danger"></span>
+        </div>
+        <div class="form-group" style="--i: 4">
+            <label asp-for="StartDate" class="control-label"></label>
+            <input asp-for="StartDate" class="form-control" type="date" value="@Model.StartDate.ToString("yyyy-MM-dd")" />
+            <span asp-validation-for="StartDate" class="text-danger"></span>
+        </div>
+        <div class="form-group" style="--i: 5">
+            <label asp-for="EndDate" class="control-label"></label>
+            <input asp-for="EndDate" class="form-control" type="date" value="@Model.EndDate.ToString("yyyy-MM-dd")" />
+            <span asp-validation-for="EndDate" class="text-danger"></span>
+        </div>
+        <div class="form-group" style="--i: 6">
+            <label asp-for="IsActive" class="control-label"></label>
+            <input asp-for="IsActive" class="form-check-input" type="checkbox" />
+            <span asp-validation-for="IsActive" class="text-danger"></span>
+        </div>
+        <div class="form-group" style="--i: 7">
+            <label asp-for="PaymentVerified" class="control-label"></label>
+            <input asp-for="PaymentVerified" class="form-check-input" type="checkbox" />
+            <span asp-validation-for="PaymentVerified" class="text-danger"></span>
+        </div>
+        <div class="form-group" style="--i: 8">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

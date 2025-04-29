@@ -1,0 +1,49 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<ECardWebsite.Models.Subscription>
+
+@{
+    ViewData["Title"] = "Manage Subscriptions";
+}
+
+<h1>Manage Subscriptions</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New Subscription</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Email List</th>
+            <th>Offer</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Active</th>
+            <th>Payment Verified</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var subscription in Model)
+        {
+            <tr>
+                <td>@subscription.User?.Username</td>
+                <td>@subscription.EmailList</td>
+                <td>@(subscription.Offer != null ? subscription.Offer.Title : "None")</td>
+                <td>@subscription.StartDate.ToString("yyyy-MM-dd")</td>
+                <td>@subscription.EndDate.ToString("yyyy-MM-dd")</td>
+                <td>@(subscription.IsActive ? "Yes" : "No")</td>
+                <td>@(subscription.PaymentVerified ? "Yes" : "No")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-subscriptionId="@subscription.SubscriptionId" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-subscriptionId="@subscription.SubscriptionId" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
